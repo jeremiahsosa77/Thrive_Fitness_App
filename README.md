@@ -48,4 +48,4 @@ To get a copy of the project up and running on your local machine for developmen
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/fitness-app.git
+   git clone https://github.com/yourusername/Thrive_Fitness_App.git
