@@ -1,6 +1,6 @@
 # Thrive Fitness/Wellness App
 
-**Fitness App** is a comprehensive mobile application built using **Android Studio**, **Java**, and **Firebase** to help users log their workouts, track meals, monitor progress, and receive personalized recommendations. The app provides workout logging, meal tracking, an AI powered chatbot and much more.
+**Thrive** is a student made fitness mobile application built using **Android Studio**, **Java**, and **Firebase** to help users log their workouts, track meals, monitor progress, and receive personalized recommendations. The app provides workout logging, meal tracking, an AI powered chatbot and much more.
 
 ---
 
