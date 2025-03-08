@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Log Out Button (Hidden in Overflow Menu) -->
+    <item
+        android:id="@+id/action_logout"
+        android:title="Log Out"
+
+        app:showAsAction="never"
+        tools:ignore="HardcodedText" /> <!-- Shows only when ⋮ is clicked -->
+
+</menu>

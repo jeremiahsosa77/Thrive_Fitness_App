@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background_white">#FFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="body_text">#757575</color>
+    <color name="button_text">#FFFFFF</color>
+    <color name="dark_text">#212121</color>
+    <color name="light_gray">#F5F5F5</color>
+    <color name="primary_green">#2E7D32</color>
+    <color name="secondary_green">#66BB6A</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">thriveapp</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <style name="Base.Theme.Thriveapp" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.Thriveapp" parent="Base.Theme.Thriveapp"/>
+</resources>
