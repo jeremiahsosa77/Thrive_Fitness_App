@@ -19,17 +19,31 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <!-- Start Workout Button -->
+    <!-- Calendar Button -->
     <Button
-        android:id="@+id/startWorkoutButton"
-        android:layout_width="wrap_content"
+        android:id="@+id/calendarButton"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Start Workout"
+        android:text="View Calendar"
         android:textColor="@color/button_text"
         android:backgroundTint="@color/primary_green"
-        app:layout_constraintTop_toBottomOf="@id/appBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintTop_toBottomOf="@+id/appBar"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Fitness Tracking Button -->
+    <Button
+        android:id="@+id/fitnessTrackingButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Fitness Tracking"
+        android:textColor="@color/button_text"
+        android:backgroundTint="@color/secondary_green"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calendarButton"
+        android:layout_marginTop="16dp"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

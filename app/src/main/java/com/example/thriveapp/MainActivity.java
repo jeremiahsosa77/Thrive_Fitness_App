@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -39,7 +40,22 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("Hello, User");
             Toast.makeText(this, "No user logged in", Toast.LENGTH_SHORT).show();
         }
-    }
+
+        // Calendar Button
+        Button calendarButton=findViewById(R.id.calendarButton);
+        calendarButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, Calendar.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP); // ensures mainactivity isn't recreated for back button compatibility
+            startActivity(intent);
+        });
+
+        // Fitness tracking button
+        Button fitnessTrackingButton = findViewById(R.id.fitnessTrackingButton);
+        fitnessTrackingButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, GoalTracking.class);
+            startActivity(intent);
+        });
+    } // end of onCreate
 
     // Inflate the menu
     @Override
