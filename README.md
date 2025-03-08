@@ -35,8 +35,6 @@
 
 ---
 
-## Getting Started
-
 # Thrive Fitness App - Installation Guide
 
 This guide will walk you through the process of setting up and running the Thrive Fitness App on your local machine using Android Studio's emulator. Follow these steps carefully to get the application up and running.
