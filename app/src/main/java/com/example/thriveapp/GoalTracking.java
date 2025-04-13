@@ -58,12 +58,20 @@ public class GoalTracking extends AppCompatActivity {
     }
 
     public void addTask(View button){
-        String buttonText = ((Button)button).getText().toString();
-        dbTaskHelper.addTask(buttonText);
+        EditText taskNameContainer = (EditText) findViewById(R.id.newTaskNameInput);
+
+        String taskName = taskNameContainer.getText().toString();
+        if(taskName == "" || taskName == "Name") {
+            return;//empty
+        }
+        if(!dbTaskHelper.addTask(taskName)) {
+            System.out.println("Saves not Succesfully");
+        }
+
+
         Button taskButton = new Button(this);
-        taskButton.setText(buttonText);
+        taskButton.setText(taskName);
         button.setBackgroundColor(Color.rgb(46,125,50));
-        taskButton.setLetterSpacing(1);
 
         taskButton.setOnClickListener(this::ClickedExercise);
         LinearLayout buttonContainer = (LinearLayout) findViewById(R.id.buttonContainer);
