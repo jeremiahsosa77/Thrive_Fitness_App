@@ -12,14 +12,14 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "ThriveTaskDB1";
     private static final String TABLE_USERS = "users";
-
+    private static final String COL_ID = "id";
     private static final String COL_TASK = "task";
     private static final String COL_DATA = "data";
 
     private static final String COL_DATE = "date";
 
     public DatabaseTaskHelper(Context context) {
-        super(context, DATABASE_NAME, null, 4);
+        super(context, DATABASE_NAME, null, 5);
     }
 
 
@@ -48,10 +48,14 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + DATABASE_NAME + " (" +
-                COL_TASK + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COL_TASK + " TEXT UNIQUE, " +
                 COL_DATA + " TEXT, " +
                 COL_DATE + " TEXT)";
         db.execSQL(createTable);
+    }
+    public void getDate(){
+
     }
 
     @Override
@@ -62,13 +66,15 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
 
     // Adds new task to database. string parameter is name of task
     public boolean addTask(String task) {// doesnt seem to work
+        System.out.println("Starting to attempt to add task");
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COL_TASK, task);
-        values.put(COL_DATA, "");
-        values.put(COL_DATE, "");
+        values.put(COL_DATA, "51");
+        values.put(COL_DATE, "12");
 
         long result = db.insert(DATABASE_NAME, null, values);
+        System.out.println("finished attempt to save data");
         return result != -1; // Returns true if successful
     }
 
@@ -89,14 +95,14 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
     }
 
     //gets data of the task given from the string. returns int array.
-    public int[] getData(String task) {
+    public int[] getData(String taskParam) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         //probably doesnt work since i dont know how rawQuery works
-        Cursor cursor = db.rawQuery("SELECT data FROM task WHERE task=?", new String[]{task});
+        Cursor cursor = db.rawQuery("SELECT data FROM " + DATABASE_NAME + " WHERE task=?", new String[]{taskParam});
 
         if (cursor.moveToFirst()) { // If a user is found
-            String data = cursor.getString(0); // Get the user's name
+            String data = cursor.getString(1); // Get the user's name
             cursor.close();
             return stringToArray(data);
         }
@@ -116,9 +122,8 @@ public void addData(String task, int data){
 }
 //get all task names to create appropriate buttons
 public String[] getAllTasks(){ //this seems to work fine, information seems to not being added. check addTask()
-        System.out.println("Get All Tasks");
     String[] taskNames = new String[5]; //TODO: change to the actual number of tasks and not arbitrary large size
-    String selectQuery = "SELECT task FROM " + DATABASE_NAME; //+ DATABASE_NAME;
+    String selectQuery = "SELECT task FROM " + DATABASE_NAME;
     int arrayPosition = 0;
     SQLiteDatabase db = this.getReadableDatabase();
     Cursor cursor = db.rawQuery(selectQuery, null);
@@ -127,9 +132,7 @@ public String[] getAllTasks(){ //this seems to work fine, information seems to n
 
     while (!cursor.isAfterLast())
             {
-                System.out.println(cursor.isAfterLast());
-
-                taskNames[arrayPosition] = cursor.getString(1); //this is probably the wrong column
+                taskNames[arrayPosition] = cursor.getString(0); //this is probably the wrong column
                 System.out.println(taskNames[arrayPosition]);
                 arrayPosition += 1;
                 cursor.moveToNext();
