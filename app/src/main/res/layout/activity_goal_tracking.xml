@@ -21,8 +21,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:animateLayoutChanges="true"
+            android:dividerPadding="2dp"
             android:isScrollContainer="true"
             android:orientation="vertical"
+            android:paddingVertical="2dp"
             android:scrollbarAlwaysDrawVerticalTrack="true"
             android:scrollbars="vertical">
 
@@ -96,7 +98,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <EditText
-            android:id="@+id/editTextText"
+            android:id="@+id/newTaskNameInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
