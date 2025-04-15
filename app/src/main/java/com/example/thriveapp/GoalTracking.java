@@ -16,14 +16,14 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.material.tabs.TabLayout;
+
 import java.util.Objects;
 
-//TODO: create loop of the database to add buttons for each excercise
-//TODO: add cool little button that adds new exercises
+//TODO: change access types to private when it can be tested if that breaks stuff
 
 public class GoalTracking extends AppCompatActivity {
     private DatabaseTaskHelper dbTaskHelper;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,11 +49,28 @@ public class GoalTracking extends AppCompatActivity {
     }
     public void InformationAdded(View button) {
         TextView ExerciseText = (TextView)findViewById(R.id.ExerciseName);
-        EditText DataField = (EditText)findViewById(R.id.DataField);
+        EditText DataField = (EditText)findViewById(R.id.dataField);
         String taskName = ExerciseText.getText().toString().trim();
         int dataAdded =  Integer.parseInt(DataField.getText().toString());
-
-        dbTaskHelper.addData(taskName, dataAdded);
+        int weightData =0;
+        int repsData = 0;
+        float timeData = 0;
+        TabLayout tab = (TabLayout)findViewById(R.id.dataType);
+        int selectedTab = tab.getSelectedTabPosition();
+        switch(selectedTab){
+            case 0:
+                weightData = dataAdded;
+                break;
+            case 1:
+                repsData = dataAdded;
+                break;
+            case 2:
+                timeData = dataAdded;
+                break;
+        }
+        System.out.println(selectedTab);
+        //check which box is selected
+        dbTaskHelper.addData(taskName, weightData,repsData,timeData);
 
     }
 
