@@ -13,10 +13,12 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "ThriveTaskDB1";
     private static final String TABLE_USERS = "users";
     private static final String COL_ID = "id";
-    private static final String COL_TASK = "task";
-    private static final String COL_DATA = "data";
+    private static final String COL_TASK = "task";//name of the exercise
+    private static final String COL_WEIGHT = "weight"; //weight for exercise
+    private static final String COL_REPS = "reps"; //repititions for exercise
+    private static final String COL_TIME = "time";//time logged for exercise
 
-    private static final String COL_DATE = "date";
+    private static final String COL_DATE = "date";//when the user logged their exercise
 
     public DatabaseTaskHelper(Context context) {
         super(context, DATABASE_NAME, null, 5);
@@ -37,10 +39,33 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
     }
 
     //converts the string version of task data into an array of its
-    private int[] stringToArray(String dataString){
+    private int[] stringToIntArray(String dataString){//doesnt work
         int[] dataArray = new int[dataString.length()];
+        String numberString ="";
+        int y = 0; //position in int array
         for(int i = 0; i < dataString.length();i++){
-            dataArray[i] = dataString.charAt(i*2);
+            if(dataString.charAt(i) != ','){
+                numberString+= dataString.charAt(i);
+            }
+            else {
+                dataArray[y++] = Integer.parseInt(numberString);
+                i++;
+            }
+        }
+        return dataArray;
+    }
+    private float[] stringToFloatArray(String dataString){//doesnt work
+        float[] dataArray = new float[dataString.length()];
+        String numberString ="";
+        int y = 0; //position in int array
+        for(int i = 0; i < dataString.length();i++){
+            if(dataString.charAt(i) != ','){
+                numberString+= dataString.charAt(i);
+            }
+            else {
+                dataArray[y++] = Float.parseFloat(numberString);
+                i++;
+            }
         }
         return dataArray;
     }
@@ -50,7 +75,10 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
         String createTable = "CREATE TABLE " + DATABASE_NAME + " (" +
                 COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COL_TASK + " TEXT UNIQUE, " +
-                COL_DATA + " TEXT, " +
+                COL_WEIGHT + " TEXT, " +
+                COL_REPS + " TEXT, " +
+                COL_TIME + " TEXT, " +
+
                 COL_DATE + " TEXT)";
         db.execSQL(createTable);
     }
@@ -70,8 +98,10 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COL_TASK, task);
-        values.put(COL_DATA, "51");
-        values.put(COL_DATE, "12");
+        values.put(COL_WEIGHT, "");
+        values.put(COL_REPS, "");
+        values.put(COL_TIME, "");
+        values.put(COL_DATE, "");
 
         long result = db.insert(DATABASE_NAME, null, values);
         System.out.println("finished attempt to save data");
@@ -79,11 +109,11 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
     }
 
     //currently gets the String version of the user data from the database
-    private String getDataString(String task) {
+    private String getDataString(String taskName, String dataType) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         //probably doesnt work since i dont know how rawQuery works
-        Cursor cursor = db.rawQuery("SELECT data FROM task WHERE task=?", new String[]{task});
+        Cursor cursor = db.rawQuery("SELECT "+ dataType+" FROM "+DATABASE_NAME+" WHERE task=?", new String[]{taskName});
 
         if (cursor.moveToFirst()) { // If a user is found
             String data = cursor.getString(0); // Get the user's name
@@ -95,34 +125,83 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
     }
 
     //gets data of the task given from the string. returns int array.
-    public int[] getData(String taskParam) {
+    public int[] getWeightData(String taskParam) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        //probably doesnt work since i dont know how rawQuery works
-        Cursor cursor = db.rawQuery("SELECT data FROM " + DATABASE_NAME + " WHERE task=?", new String[]{taskParam});
+        Cursor cursor = db.rawQuery("SELECT weight FROM " + DATABASE_NAME + " WHERE task=?", new String[]{taskParam});
 
         if (cursor.moveToFirst()) { // If a user is found
             String data = cursor.getString(1); // Get the user's name
             cursor.close();
-            return stringToArray(data);
+            return stringToIntArray(data);
         }
         cursor.close();
         return null; // Return null if user not found
     }
+    public int[] getRepsData(String taskParam) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT reps FROM " + DATABASE_NAME + " WHERE task=?", new String[]{taskParam});
+
+        if (cursor.moveToFirst()) { // If a user is found
+            String data = cursor.getString(1); // Get the user's name
+            cursor.close();
+            return stringToIntArray(data);
+        }
+        cursor.close();
+        return null; // Return null if user not found
+    }
+    public float[] getTimeData(String taskParam) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT time FROM " + DATABASE_NAME + " WHERE task=?", new String[]{taskParam});
+
+        if (cursor.moveToFirst()) { // If db found
+            String data = cursor.getString(1); // Get the user's name
+            cursor.close();
+            return stringToFloatArray(data);
+        }
+        cursor.close();
+        return null; // Return null if unsuccessful
+    }
 
     //adds data to task. string is task name, int data is the data to add to end of list
-public void addData(String task, int data){
+public void addData(String task,int weight,int reps, float time){
     SQLiteDatabase db = this.getWritableDatabase();
     ContentValues values = new ContentValues();
+    if(weight >0){
+        String weightDataString = getDataString(task,Integer.toString(weight));
+        weightDataString += weight;
+        weightDataString += ",";
+        values.put(COL_WEIGHT, weightDataString);
+    }
+    else {
+        values.put(COL_WEIGHT,getDataString(task,"weight"));
+    }
+    if(reps >0){
+        String repsDataString = getDataString(task,Integer.toString(reps));
+        repsDataString += reps;
+        repsDataString += ",";
+        values.put(COL_REPS, repsDataString);
+    }
+    else {
+        values.put(COL_WEIGHT,getDataString(task,"reps"));
+    }
+    if(time >0){
+        String timeDataString = getDataString(task,Float.toString(time));
+        timeDataString += time;
+        timeDataString += ",";
+        values.put(COL_TIME, timeDataString);
+    }
+    else {
+        values.put(COL_WEIGHT,getDataString(task,"time"));
+    }
+    db.update(DATABASE_NAME, values, "task = task", new String[]{task});//task = task is the potential issue
 
-    String dataString = getDataString(task);
-    dataString += data;
-    dataString += ",";
-//TODO just noticed this was wrong, will fix at meeting. above is good below was bad
 }
 //get all task names to create appropriate buttons
 public String[] getAllTasks(){ //this seems to work fine, information seems to not being added. check addTask()
-    String[] taskNames = new String[5]; //TODO: change to the actual number of tasks and not arbitrary large size
+    String[] taskNames = new String[20]; //TODO: change to the actual number of tasks and not arbitrary large size
     String selectQuery = "SELECT task FROM " + DATABASE_NAME;
     int arrayPosition = 0;
     SQLiteDatabase db = this.getReadableDatabase();
