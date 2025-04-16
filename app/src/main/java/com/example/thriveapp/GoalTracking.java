@@ -23,20 +23,21 @@ import java.util.Objects;
 //TODO: change access types to private when it can be tested if that breaks stuff
 
 public class GoalTracking extends AppCompatActivity {
-    private DatabaseTaskHelper dbTaskHelper;
+    private DatabaseTaskHelper dbTaskHelper = new DatabaseTaskHelper(this);
+    private boolean loaded = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_goal_tracking);
-        dbTaskHelper = new DatabaseTaskHelper(this);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            System.out.println("test3");
-            listOfTasks();//makes list of buttons for each task
-            System.out.println("test4");
-
+            System.out.println("workding");
+            if(!loaded){
+                listOfTasks();//makes list of buttons for each task
+                loaded = true;
+            }
             return insets;
         });
     }
@@ -48,9 +49,13 @@ public class GoalTracking extends AppCompatActivity {
 
     }
     public void InformationAdded(View button) {
-        TextView ExerciseText = (TextView)findViewById(R.id.ExerciseName);
+        System.out.println("arbeiten");
+        TextView exerciseText = (TextView)findViewById(R.id.ExerciseName);
         EditText DataField = (EditText)findViewById(R.id.dataField);
-        String taskName = ExerciseText.getText().toString().trim();
+        String taskName = exerciseText.getText().toString().trim();
+        if(!taskExists(taskName)) {
+            System.out.println("Achtung");
+            return;}
         int dataAdded =  Integer.parseInt(DataField.getText().toString());
         int weightData =0;
         int repsData = 0;
@@ -68,13 +73,13 @@ public class GoalTracking extends AppCompatActivity {
                 timeData = dataAdded;
                 break;
         }
-        System.out.println(selectedTab);
         //check which box is selected
         dbTaskHelper.addData(taskName, weightData,repsData,timeData);
 
     }
 
     public void addTask(View button){
+
         EditText taskNameContainer = (EditText) findViewById(R.id.newTaskNameInput);
 
         String taskName = taskNameContainer.getText().toString();
@@ -95,24 +100,32 @@ public class GoalTracking extends AppCompatActivity {
         buttonContainer.addView(taskButton);
     }
 
-    public void listOfTasks(){
-            String[] tasks = dbTaskHelper.getAllTasks();
-            for(var taskName : tasks) {
-                //code to create button for each task
-                //might work, if not its probably the database helper getAllTasks() method
-
-                // android:id="@+id/buttonContainer";
-                if(!Objects.equals(taskName, null)) {
-                    LinearLayout buttonContainer = (LinearLayout) findViewById(R.id.buttonContainer);
-
-                    Button button = new Button(this);
-                    button.setText(taskName);
-                    button.setBackgroundColor(Color.rgb(46, 125, 50));
-                    button.setOnClickListener(this::ClickedExercise);
-                    button.setLetterSpacing(1);
-                    buttonContainer.addView(button);
-                }
+    //returns true if task(exercise) exists
+    private boolean taskExists(String checkTask){
+        String[] tasks = dbTaskHelper.getAllTasks();
+        for(var taskName : tasks) {
+            if(taskName.equals(checkTask)){
+                return true;
             }
+        }
+        return false;
+    }
+    public void listOfTasks() {
+        System.out.println("Testing");
+        String[] tasks = dbTaskHelper.getAllTasks();
+        for (var taskName : tasks) {
+            // android:id="@+id/buttonContainer";
+            if (!Objects.equals(taskName, null)) {
+                LinearLayout buttonContainer = (LinearLayout) findViewById(R.id.buttonContainer);
+
+                Button button = new Button(this);
+                button.setText(taskName);
+                button.setBackgroundColor(Color.rgb(46, 125, 50));
+                button.setOnClickListener(this::ClickedExercise);
+                button.setLetterSpacing(1);
+                buttonContainer.addView(button);
+            }
+        }
 
     }
 
