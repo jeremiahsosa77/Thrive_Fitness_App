@@ -45,7 +45,7 @@
         android:layout_height="38dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="80dp"
-        android:text="Squat"
+        android:text="Click on Exercise"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -123,19 +123,19 @@
         android:text="Enter"
         android:textColorLink="#02FA13"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.591"
-        app:layout_constraintStart_toStartOf="@+id/dataField"
+        app:layout_constraintHorizontal_bias="0.246"
+        app:layout_constraintStart_toEndOf="@+id/dataField"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/dataField"
-        android:layout_width="117dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
         android:layout_marginTop="236dp"
-        android:layout_marginEnd="196dp"
         android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
