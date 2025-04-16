@@ -5,27 +5,56 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import java.util.Calendar;
 
 import java.util.Date;
+
 
 public class DatabaseTaskHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "ThriveTaskDB1";
-    private static final String TABLE_USERS = "users";
     private static final String COL_ID = "id";
     private static final String COL_TASK = "task";//name of the exercise
     private static final String COL_WEIGHT = "weight"; //weight for exercise
-    private static final String COL_REPS = "reps"; //repititions for exercise
+    private static final String COL_REPS = "reps"; //repetitions for exercise
     private static final String COL_TIME = "time";//time logged for exercise
 
     private static final String COL_DATE = "date";//when the user logged their exercise
 
+
+
     public DatabaseTaskHelper(Context context) {
-        super(context, DATABASE_NAME, null, 5);
+        super(context, DATABASE_NAME, null, 6);
+    }//make sure to increment version (last int value) each time the database structure is changed
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        String createTable = "CREATE TABLE " + DATABASE_NAME + " (" +
+                COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COL_TASK + " TEXT UNIQUE, " +
+                COL_WEIGHT + " TEXT, " +
+                COL_REPS + " TEXT, " +
+                COL_TIME + " TEXT, " +
+
+                COL_DATE + " TEXT)";
+        db.execSQL(createTable);
+    }
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_NAME);
+        onCreate(db);
     }
 
-
-    //converts an int array into a string so it can be put into the database
+    //gets number of exercises/rows in the database
+    private int getNumberOfRows() {
+        String countQuery = "SELECT  * FROM " + DATABASE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+        int count = cursor.getCount();
+        cursor.close();
+        return count;
+    }
+    //converts an int array into a string so it can be put into the database //TODO: remove, not used
     private String arrayToString(int[] dataArray) {
         //StringBuilder is more efficient for loops. assign string to stringBuild at end
         StringBuilder stringBuild = new StringBuilder();
@@ -39,7 +68,7 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
     }
 
     //converts the string version of task data into an array of its
-    private int[] stringToIntArray(String dataString){//doesnt work
+    private int[] stringToIntArray(String dataString){
         int[] dataArray = new int[dataString.length()];
         String numberString ="";
         int y = 0; //position in int array
@@ -70,31 +99,26 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
         return dataArray;
     }
 
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-        String createTable = "CREATE TABLE " + DATABASE_NAME + " (" +
-                COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL_TASK + " TEXT UNIQUE, " +
-                COL_WEIGHT + " TEXT, " +
-                COL_REPS + " TEXT, " +
-                COL_TIME + " TEXT, " +
 
-                COL_DATE + " TEXT)";
-        db.execSQL(createTable);
-    }
-    public void getDate(){
+    public String getDates(String taskParam){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT date FROM " + DATABASE_NAME + " WHERE task=?", new String[]{taskParam});
+
+        if (cursor.moveToFirst()) { // If a user is found
+            String data = cursor.getString(1); // Get the user's name
+            cursor.close();
+            return data;
+        }
+        cursor.close();
+        return null; // Return null if user not found
 
     }
 
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_NAME);
-        onCreate(db);
-    }
+
 
     // Adds new task to database. string parameter is name of task
     public boolean addTask(String task) {// doesnt seem to work
-        System.out.println("Starting to attempt to add task");
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COL_TASK, task);
@@ -104,7 +128,6 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
         values.put(COL_DATE, "");
 
         long result = db.insert(DATABASE_NAME, null, values);
-        System.out.println("finished attempt to save data");
         return result != -1; // Returns true if successful
     }
 
@@ -113,8 +136,9 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         //probably doesnt work since i dont know how rawQuery works
-        Cursor cursor = db.rawQuery("SELECT "+ dataType+" FROM "+DATABASE_NAME+" WHERE task=?", new String[]{taskName});
-
+//        Cursor cursor = db.rawQuery("SELECT "+ dataType+" FROM "+DATABASE_NAME+" WHERE task="+taskName, new String[]{taskName});
+        Cursor cursor = db.rawQuery("SELECT '"+dataType+ "' FROM "+DATABASE_NAME+" WHERE  task=?", new String[]{taskName});
+        System.out.println("Worked");
         if (cursor.moveToFirst()) { // If a user is found
             String data = cursor.getString(0); // Get the user's name
             cursor.close();
@@ -141,7 +165,7 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
     public int[] getRepsData(String taskParam) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT reps FROM " + DATABASE_NAME + " WHERE task=?", new String[]{taskParam});
+        Cursor cursor = db.rawQuery("SELECT reps FROM " + DATABASE_NAME + " WHERE task="+taskParam, new String[]{taskParam});
 
         if (cursor.moveToFirst()) { // If a user is found
             String data = cursor.getString(1); // Get the user's name
@@ -164,66 +188,65 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
         cursor.close();
         return null; // Return null if unsuccessful
     }
+private String getCurrentDate(){
+    Calendar calendar = Calendar.getInstance();
+    Date date = new Date();
+    calendar.setTime(date);
+    int month = calendar.get(Calendar.MONTH);
+    int day = calendar.get(calendar.DAY_OF_MONTH) + 1;
+    int year = calendar.get(calendar.YEAR);
+    String currentDate = "";
+    currentDate = month + "/" + day + "/" + year;
 
+    return currentDate;
+}
     //adds data to task. string is task name, int data is the data to add to end of list
 public void addData(String task,int weight,int reps, float time){
+        System.out.println("AWAWAW");
+
     SQLiteDatabase db = this.getWritableDatabase();
     ContentValues values = new ContentValues();
-    if(weight >0){
-        String weightDataString = getDataString(task,Integer.toString(weight));
-        weightDataString += weight;
+    if(weight >=0){
+        String weightDataString = getDataString(task,"weight");
+        System.out.println(weightDataString);
+        weightDataString += Integer.toString(weight);
         weightDataString += ",";
         values.put(COL_WEIGHT, weightDataString);
     }
-    else {
-        values.put(COL_WEIGHT,getDataString(task,"weight"));
-    }
-    if(reps >0){
-        String repsDataString = getDataString(task,Integer.toString(reps));
-        repsDataString += reps;
+
+    if(reps >=0){
+        String repsDataString = getDataString(task,"reps");
+        repsDataString += Integer.toString(reps);
         repsDataString += ",";
         values.put(COL_REPS, repsDataString);
     }
-    else {
-        values.put(COL_WEIGHT,getDataString(task,"reps"));
-    }
-    if(time >0){
-        String timeDataString = getDataString(task,Float.toString(time));
-        timeDataString += time;
+
+    if(time >=0){
+        String timeDataString = getDataString(task,"time");
+        timeDataString += Float.toString(time);
         timeDataString += ",";
         values.put(COL_TIME, timeDataString);
     }
-    else {
-        values.put(COL_WEIGHT,getDataString(task,"time"));
-    }
-    db.update(DATABASE_NAME, values, "task = task", new String[]{task});//task = task is the potential issue
-
+    values.put(COL_DATE, getCurrentDate() + ",");
+    db.update(DATABASE_NAME, values, "task=?", new String[]{task});
 }
 //get all task names to create appropriate buttons
 public String[] getAllTasks(){ //this seems to work fine, information seems to not being added. check addTask()
-    String[] taskNames = new String[20]; //TODO: change to the actual number of tasks and not arbitrary large size
+    String[] taskNames = new String[getNumberOfRows()];
     String selectQuery = "SELECT task FROM " + DATABASE_NAME;
     int arrayPosition = 0;
     SQLiteDatabase db = this.getReadableDatabase();
     Cursor cursor = db.rawQuery(selectQuery, null);
-
     cursor.moveToFirst();
-
     while (!cursor.isAfterLast())
             {
                 taskNames[arrayPosition] = cursor.getString(0); //this is probably the wrong column
-                System.out.println(taskNames[arrayPosition]);
                 arrayPosition += 1;
                 cursor.moveToNext();
-
             }
-
     cursor.close();
     db.close();
-
-
     return taskNames;
-
 }
 
 }
