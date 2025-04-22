@@ -1,6 +1,7 @@
 package com.example.thriveapp;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -14,8 +15,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.android.material.tabs.TabLayout;
-
 import java.util.Objects;
 
 public class MealTracking extends AppCompatActivity {
@@ -27,12 +26,12 @@ public class MealTracking extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_meal_tracking);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            System.out.println("workding");
             if(!loaded){
-                listOfTasks();//makes list of buttons for each task
+                listOfNutrients();//makes list of buttons for each nutrient
                 loaded = true;
             }
             return insets;
@@ -49,10 +48,10 @@ public class MealTracking extends AppCompatActivity {
     public void InformationAdded(View button) {
         TextView nutrientText = (TextView)findViewById(R.id.NutrientName);
         EditText DataField = (EditText)findViewById(R.id.dataField);
-        String taskName = nutrientText.getText().toString().trim();
+        String nutrientName = nutrientText.getText().toString().trim();
         int dataAdded =  Integer.parseInt(DataField.getText().toString());
 
-        if(!nutrientExists(taskName) || dataAdded < 0) {
+        if(!nutrientExists(nutrientName) || dataAdded < 0) {
             return;}
         int data = dataAdded;
         dbMealHelper.addData(nutrientName, data);
@@ -60,7 +59,7 @@ public class MealTracking extends AppCompatActivity {
 
     public void addNutrient(View button){
 
-        EditText nutrientNameContainer = (EditText) findViewById(R.id.newNutrientNameInput);
+        EditText nutrientNameContainer = (EditText) findViewById(R.id.NutrientNameInput);
 
         String nutrientName = nutrientNameContainer.getText().toString();
         if(nutrientName == "" || nutrientName == "Name") {
@@ -72,8 +71,14 @@ public class MealTracking extends AppCompatActivity {
 
 
         Button nutrientButton = new Button(this);
+        Drawable background = getResources().getDrawable(R.drawable.button_rounded);
+        button.setBackground(background);
+
         nutrientButton.setText(nutrientName);
-        button.setBackgroundColor(Color.rgb(46,125,50));
+        nutrientButton.setTextSize(23);
+        nutrientButton.setTextColor(Color.WHITE);
+        nutrientButton.setOnClickListener(this::ClickedNutrient);
+        nutrientButton.setTextColor(Color.rgb(0,0,0));
 
         nutrientButton.setOnClickListener(this::ClickedNutrient);
         LinearLayout buttonContainer = (LinearLayout) findViewById(R.id.buttonContainer);
@@ -90,8 +95,7 @@ public class MealTracking extends AppCompatActivity {
         }
         return false;
     }
-    public void listOfnutrients() {
-        System.out.println("Testing");
+    public void listOfNutrients() {
         String[] nutrients = dbMealHelper.getAllTrackedNutrients();
         for (var nutrientName : nutrients) {
             // android:id="@+id/buttonContainer";
@@ -99,10 +103,13 @@ public class MealTracking extends AppCompatActivity {
                 LinearLayout buttonContainer = (LinearLayout) findViewById(R.id.buttonContainer);
 
                 Button button = new Button(this);
+                Drawable background = getResources().getDrawable(R.drawable.button_rounded);
+                button.setBackground(background);
+
                 button.setText(nutrientName);
-                button.setBackgroundColor(Color.rgb(46, 125, 50));
+                button.setTextSize(23);
+                button.setTextColor(Color.WHITE);
                 button.setOnClickListener(this::ClickedNutrient);
-                button.setLetterSpacing(1);
                 buttonContainer.addView(button);
             }
         }
