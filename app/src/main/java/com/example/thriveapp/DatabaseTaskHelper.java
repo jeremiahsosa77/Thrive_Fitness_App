@@ -83,8 +83,8 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
         }
         return dataArray;
     }
-    private float[] stringToFloatArray(String dataString){//doesnt work
-        float[] dataArray = new float[dataString.length()];
+    private double[] stringTodoubleArray(String dataString){//doesnt work
+        double[] dataArray = new double[dataString.length()];
         String numberString ="";
         int y = 0; //position in int array
         for(int i = 0; i < dataString.length();i++){
@@ -92,7 +92,7 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
                 numberString+= dataString.charAt(i);
             }
             else {
-                dataArray[y++] = Float.parseFloat(numberString);
+                dataArray[y++] = Double.parseDouble(numberString);
                 i++;
             }
         }
@@ -175,7 +175,7 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
         cursor.close();
         return null; // Return null if user not found
     }
-    public float[] getTimeData(String taskParam) {
+    public double[] getTimeData(String taskParam) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery("SELECT time FROM " + DATABASE_NAME + " WHERE task=?", new String[]{taskParam});
@@ -183,7 +183,7 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) { // If db found
             String data = cursor.getString(1); // Get the user's name
             cursor.close();
-            return stringToFloatArray(data);
+            return stringTodoubleArray(data);
         }
         cursor.close();
         return null; // Return null if unsuccessful
@@ -201,7 +201,7 @@ private String getCurrentDate(){
     return currentDate;
 }
     //adds data to task. string is task name, int data is the data to add to end of list
-public void addData(String task,int weight,int reps, float time){
+public void addData(String task,int weight,int reps, double time){
         System.out.println("AWAWAW");
 
     SQLiteDatabase db = this.getWritableDatabase();
@@ -223,7 +223,7 @@ public void addData(String task,int weight,int reps, float time){
 
     if(time >=0){
         String timeDataString = getDataString(task,"time");
-        timeDataString += Float.toString(time);
+        timeDataString += Double.toString(time);
         timeDataString += ",";
         values.put(COL_TIME, timeDataString);
     }
