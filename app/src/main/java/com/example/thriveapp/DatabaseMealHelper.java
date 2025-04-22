@@ -9,7 +9,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class DatabaseMealHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "ThriveTaskDB1";
+    private static final String DATABASE_NAME = "ThriveNutrientDB";
     private static final String COL_ID = "id";
     private static final String COL_NUTRIENT = "nutrient";//name of the nutrient
     private static final String COL_DATA = "data"; //nutrients for meal
@@ -45,7 +45,7 @@ public class DatabaseMealHelper extends SQLiteOpenHelper {
         return count;
     }
 
-    //converts the string version of task data into an array of its
+    //converts the string version of nutrien data into an array of its
     private int[] stringToIntArray(String dataString) {
         int[] dataArray = new int[dataString.length()];
         String numberString = "";
@@ -64,7 +64,7 @@ public class DatabaseMealHelper extends SQLiteOpenHelper {
     public String getDates(String nutrientParam) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT date FROM " + DATABASE_NAME + " WHERE task=?", new String[]{nutrientParam});
+        Cursor cursor = db.rawQuery("SELECT date FROM " + DATABASE_NAME + " WHERE nutrient=?", new String[]{nutrientParam});
 
         if (cursor.moveToFirst()) { // If a user is found
             String data = cursor.getString(1); // Get the user's name
@@ -76,7 +76,7 @@ public class DatabaseMealHelper extends SQLiteOpenHelper {
     }
 
     // Adds new nutrient to database. string parameter is name of nutrient
-    public boolean addTask(String nutrient) {// doesnt seem to work
+    public boolean addNutrient(String nutrient) {// doesnt seem to work
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COL_NUTRIENT, nutrient);
@@ -92,8 +92,7 @@ public class DatabaseMealHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         //probably doesnt work since i dont know how rawQuery works
-//        Cursor cursor = db.rawQuery("SELECT "+ dataType+" FROM "+DATABASE_NAME+" WHERE task="+taskName, new String[]{taskName});
-        Cursor cursor = db.rawQuery("SELECT '"+COL_DATA+ "' FROM "+DATABASE_NAME+" WHERE  task=?", new String[]{nutrientName});
+        Cursor cursor = db.rawQuery("SELECT '"+COL_DATA+ "' FROM "+DATABASE_NAME+" WHERE  nutrient=?", new String[]{nutrientName});
         System.out.println("Worked");
         if (cursor.moveToFirst()) { // If a user is found
             String data = cursor.getString(0); // Get the user's name
@@ -118,7 +117,7 @@ public class DatabaseMealHelper extends SQLiteOpenHelper {
     }
 
 
-    //adds data to task. string is task name, int data is the data to add to end of list
+    //adds data to nutrient. string is nutrient name, int data is the data to add to end of list
     public void addData(String nutrient,int data){
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -131,11 +130,11 @@ public class DatabaseMealHelper extends SQLiteOpenHelper {
             values.put(COL_DATA, dataString);
         }
         values.put(COL_DATE, getCurrentDate() + ",");
-        db.update(DATABASE_NAME, values, "task=?", new String[]{task});
+        db.update(DATABASE_NAME, values, "nutrient=?", new String[]{nutrient});
     }
-    public String[] getAllTrackedNutrients(){ //this seems to work fine, information seems to not being added. check addTask()
+    public String[] getAllTrackedNutrients(){
         String[] nutrientNames = new String[getNumberOfRows()];
-        String selectQuery = "SELECT task FROM " + DATABASE_NAME;
+        String selectQuery = "SELECT nutrient FROM " + DATABASE_NAME;
         int arrayPosition = 0;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
