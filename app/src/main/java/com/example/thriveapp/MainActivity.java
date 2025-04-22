@@ -55,6 +55,14 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, GoalTracking.class);
             startActivity(intent);
         });
+
+        Button MealTrackingButton = findViewById(R.id.MealTrackingButton);
+        MealTrackingButton.setOnClickListener(v -> {
+            System.out.println("works here");
+            Intent intent = new Intent(this, MealTracking.class);
+            startActivity(intent);
+        });
+
     } // end of onCreate
 
     // Inflate the menu
