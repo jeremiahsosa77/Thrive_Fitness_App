@@ -19,24 +19,17 @@
         <LinearLayout
             android:id="@+id/buttonContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:animateLayoutChanges="true"
-            android:dividerPadding="2dp"
+            android:divider="@drawable/dividor"
+            android:dividerPadding="20dp"
+            android:drawingCacheQuality="auto"
             android:isScrollContainer="true"
             android:orientation="vertical"
-            android:paddingVertical="2dp"
+            android:paddingVertical="20dp"
             android:scrollbarAlwaysDrawVerticalTrack="true"
-            android:scrollbars="vertical">
-
-            <Button
-                android:id="@+id/button15"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/primary_green"
-                android:onClick="ClickedExercise"
-                android:text="Curl" />
-
-        </LinearLayout>
+            android:scrollbars="vertical"
+            android:showDividers="middle" />
     </ScrollView>
 
     <TextView
