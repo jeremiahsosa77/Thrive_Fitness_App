@@ -3,6 +3,7 @@ package com.example.thriveapp;
 import static androidx.compose.ui.graphics.ColorKt.Color;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -10,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,12 +52,10 @@ public class GoalTracking extends AppCompatActivity {
 
     }
     public void InformationAdded(View button) {
-        System.out.println("arbeiten");
         TextView exerciseText = (TextView)findViewById(R.id.ExerciseName);
         EditText DataField = (EditText)findViewById(R.id.dataField);
         String taskName = exerciseText.getText().toString().trim();
         if(!taskExists(taskName)) {
-            System.out.println("Achtung");
             return;}
         int dataAdded =  Integer.parseInt(DataField.getText().toString());
         int weightData =0;
@@ -87,13 +88,19 @@ public class GoalTracking extends AppCompatActivity {
             return;//empty
         }
         if(!dbTaskHelper.addTask(taskName)) {
-            System.out.println("Saves not Succesfully");
+            System.out.println("Save not Successful");
+            return;
         }
+        Button taskButton = new Button (this);
 
+        Drawable background = getResources().getDrawable(R.drawable.button_rounded);
+        taskButton.setBackground(background);
 
-        Button taskButton = new Button(this);
         taskButton.setText(taskName);
-        button.setBackgroundColor(Color.rgb(46,125,50));
+        taskButton.setTextSize(23);
+        taskButton.setTextColor(Color.WHITE);
+
+       // button.setBackgroundColor(Color.rgb(46,125,50));
 
         taskButton.setOnClickListener(this::ClickedExercise);
         LinearLayout buttonContainer = (LinearLayout) findViewById(R.id.buttonContainer);
@@ -118,12 +125,17 @@ public class GoalTracking extends AppCompatActivity {
             if (!Objects.equals(taskName, null)) {
                 LinearLayout buttonContainer = (LinearLayout) findViewById(R.id.buttonContainer);
 
-                Button button = new Button(this);
-                button.setText(taskName);
-                button.setBackgroundColor(Color.rgb(46, 125, 50));
-                button.setOnClickListener(this::ClickedExercise);
-                button.setLetterSpacing(1);
-                buttonContainer.addView(button);
+                Button taskButton = new Button (this);
+
+                Drawable background = getResources().getDrawable(R.drawable.button_rounded);
+                taskButton.setBackground(background);
+
+                taskButton.setText(taskName);
+                taskButton.setTextSize(20);
+                taskButton.setTextColor(Color.WHITE);
+
+                taskButton.setOnClickListener(this::ClickedExercise);
+                buttonContainer.addView(taskButton);
             }
         }
 
