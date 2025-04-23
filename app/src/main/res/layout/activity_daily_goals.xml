@@ -57,6 +57,46 @@
             android:text="Drink 8 cups of water"
             android:textSize="18sp"
             android:padding="8dp" />
+
+        <CheckBox
+            android:id="@+id/task4"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Stretch for 5 minutes"
+            android:textSize="18sp"
+            android:padding="8dp" />
+
+        <CheckBox
+            android:id="@+id/task5"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Do 20 squats"
+            android:textSize="18sp"
+            android:padding="8dp" />
+
+        <CheckBox
+            android:id="@+id/task6"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Hold a 30 second plank"
+            android:textSize="18sp"
+            android:padding="8dp" />
+
+        <CheckBox
+            android:id="@+id/task7"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Do 10 jumping jacks"
+            android:textSize="18sp"
+            android:padding="8dp" />
+
+        <CheckBox
+            android:id="@+id/task8"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Track all meals for the day"
+            android:textSize="18sp"
+            android:padding="8dp" />
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

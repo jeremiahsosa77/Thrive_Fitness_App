@@ -35,6 +35,11 @@ public class DailyGoalsActivity extends AppCompatActivity {
         CheckBox task1 = findViewById(R.id.task1);
         CheckBox task2 = findViewById(R.id.task2);
         CheckBox task3 = findViewById(R.id.task3);
+        CheckBox task4 = findViewById(R.id.task4);
+        CheckBox task5 = findViewById(R.id.task5);
+        CheckBox task6 = findViewById(R.id.task6);
+        CheckBox task7 = findViewById(R.id.task7);
+        CheckBox task8 = findViewById(R.id.task8);
 
         // Logic for handling resetting tasks on new day (daily goals)
         SharedPreferences prefs = getSharedPreferences("daily_tasks", MODE_PRIVATE);
@@ -46,6 +51,11 @@ public class DailyGoalsActivity extends AppCompatActivity {
             task1.setChecked(false);
             task2.setChecked(false);
             task3.setChecked(false);
+            task4.setChecked(false);
+            task5.setChecked(false);
+            task6.setChecked(false);
+            task7.setChecked(false);
+            task8.setChecked(false);
             prefs.edit().putString("last_checked_date", today).apply();
         }
     }
