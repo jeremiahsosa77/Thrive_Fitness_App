@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Calendar extends AppCompatActivity {
+public class Graphing extends AppCompatActivity {
     private DatabaseHelper dbHelper; // For user info
     private DatabaseTaskHelper taskHelper; // For workout logs
     private Map<Float, Integer> workoutTimeMap = new HashMap<>(); // hour -> reps
