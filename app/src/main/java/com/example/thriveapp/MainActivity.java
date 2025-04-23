@@ -42,9 +42,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Calendar Button
-        Button calendarButton=findViewById(R.id.calendarButton);
-        calendarButton.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, Calendar.class);
+        Button GraphButton=findViewById(R.id.GraphButton);
+        GraphButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, Graphing.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP); // ensures mainactivity isn't recreated for back button compatibility
             startActivity(intent);
         });

@@ -7,13 +7,22 @@
     android:padding="16dp"
     android:background="@android:color/white">
 
-    <!-- Top toolbar (optional, if using ActionBar/Toolbar) -->
+    <!-- Top toolbar -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <!-- NEW: Dropdown to select task -->
+    <Spinner
+        android:id="@+id/taskSelector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:padding="8dp"
+        android:spinnerMode="dropdown" />
 
     <!-- Line Chart -->
     <com.github.mikephil.charting.charts.LineChart
@@ -34,12 +43,3 @@
         android:paddingBottom="16dp" />
 
 </LinearLayout>
-strings.xml(res/values/strings.xml):
-<string-array name="fitness_goals">
-    <item>LEANED / TONED</item>
-    <item>BUILD MUSCLE</item>
-    <item>STRENGTH & POWER</item>
-    <item>ATHLETIC & AGILE</item>
-    <item>ENDURANCE & STAMINA</item>
-    <item>GENERAL FITNESS AND HEALTH</item>
-</string-array>

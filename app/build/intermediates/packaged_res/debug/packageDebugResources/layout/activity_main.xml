@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -9,66 +8,117 @@
     tools:context=".MainActivity">
 
     <!-- Toolbar for the app header -->
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/primary_green"
         android:elevation="4dp"
-        app:titleTextColor="@color/button_text"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@color/button_text" />
 
-    <!-- Calendar Button -->
-    <Button
-        android:id="@+id/calendarButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="View Calendar"
-        android:textColor="@color/button_text"
-        android:backgroundTint="@color/primary_green"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBar"
-        android:layout_marginTop="16dp"/>
 
     <!-- Fitness Tracking Button -->
-    <Button
-        android:id="@+id/fitnessTrackingButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Fitness Tracking"
-        android:textColor="@color/button_text"
-        android:backgroundTint="@color/secondary_green"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/calendarButton"
-        android:layout_marginTop="16dp"/>
+
+    <!-- Graph Button -->
 
     <!-- Meal Tracking Button -->
+
+    <!-- Daily Goals Button -->
+
+    <Button
+        android:id="@+id/fitnessTrackingButton"
+        android:layout_width="200dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/secondary_green"
+        android:gravity="bottom|center"
+        android:text="Fitness Tracking"
+        android:textColor="@color/button_text"
+        android:textSize="20dp"
+        app:cornerRadius="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GraphButton" />
+
+    <Button
+        android:id="@+id/GraphButton"
+        android:layout_width="200dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="68dp"
+        android:backgroundTint="@color/secondary_green"
+        android:gravity="bottom|center"
+        android:text="Graphing"
+        android:textColor="@color/button_text"
+        android:textSize="20dp"
+        app:cornerRadius="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBar" />
+
     <Button
         android:id="@+id/MealTrackingButton"
-        android:layout_width="412dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="200dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#69BA6D"
+        android:gravity="bottom|center"
+        android:paddingVertical="0dp"
         android:text="Meal Tracking"
+        android:textSize="20dp"
+        app:cornerRadius="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fitnessTrackingButton" />
 
-    <!-- Daily Goals Button -->
     <Button
         android:id="@+id/DailyGoalsButton"
-        android:layout_width="412dp"
-        android:layout_height="46dp"
+        android:layout_width="200dp"
+        android:layout_height="120dp"
         android:layout_marginTop="24dp"
         android:backgroundTint="#69BA6D"
+        android:gravity="bottom|center"
         android:text="Daily Goals"
+        android:textSize="20dp"
+        app:cornerRadius="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MealTrackingButton" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="119dp"
+        android:layout_height="80dp"
+        app:layout_constraintEnd_toEndOf="@+id/DailyGoalsButton"
+        app:layout_constraintStart_toStartOf="@+id/DailyGoalsButton"
+        app:layout_constraintTop_toTopOf="@+id/DailyGoalsButton"
+        app:srcCompat="@drawable/sun_icon" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="82dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        app:tint="#E91717"
+        app:layout_constraintEnd_toEndOf="@+id/fitnessTrackingButton"
+        app:layout_constraintStart_toStartOf="@+id/fitnessTrackingButton"
+        app:layout_constraintTop_toTopOf="@+id/fitnessTrackingButton"
+        app:srcCompat="@drawable/dumbell" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="98dp"
+        android:layout_height="72dp"
+        app:layout_constraintEnd_toEndOf="@+id/MealTrackingButton"
+        app:layout_constraintStart_toStartOf="@+id/MealTrackingButton"
+        app:layout_constraintTop_toTopOf="@+id/MealTrackingButton"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -71,14 +71,15 @@ public class MealTracking extends AppCompatActivity {
 
 
         Button nutrientButton = new Button(this);
+
         Drawable background = getResources().getDrawable(R.drawable.button_rounded);
-        button.setBackground(background);
+        nutrientButton.setBackground(background);
 
         nutrientButton.setText(nutrientName);
         nutrientButton.setTextSize(23);
         nutrientButton.setTextColor(Color.WHITE);
+
         nutrientButton.setOnClickListener(this::ClickedNutrient);
-        nutrientButton.setTextColor(Color.rgb(0,0,0));
 
         nutrientButton.setOnClickListener(this::ClickedNutrient);
         LinearLayout buttonContainer = (LinearLayout) findViewById(R.id.buttonContainer);

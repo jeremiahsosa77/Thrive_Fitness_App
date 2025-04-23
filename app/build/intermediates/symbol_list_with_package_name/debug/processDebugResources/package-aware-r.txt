@@ -1349,6 +1349,7 @@ color accent_material_dark
 color accent_material_light
 color androidx_core_ripple_material_light
 color androidx_core_secondary_text_default_material_light
+color background
 color background_floating_material_dark
 color background_floating_material_light
 color background_material_dark
@@ -2966,6 +2967,7 @@ drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable dividor
+drawable dumbell
 drawable ic_arrow_back_black_24
 drawable ic_call_answer
 drawable ic_call_answer_low
@@ -3059,10 +3061,12 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable sun_icon
 drawable test_level_drawable
 drawable thrive_logo
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable weight
 id ALT
 id AddNutrientButton
 id BOTTOM_END
@@ -3071,6 +3075,7 @@ id CTRL
 id DailyGoalsButton
 id ExerciseName
 id FUNCTION
+id GraphButton
 id META
 id MealTrackingButton
 id NO_DEBUG
@@ -3175,8 +3180,6 @@ id button
 id buttonContainer
 id buttonPanel
 id cache_measures
-id calendarButton
-id calendarView
 id callMeasure
 id cancel_button
 id carryVelocity
@@ -3308,6 +3311,9 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imageView
+id imageView4
+id imageView5
 id immediateStop
 id included
 id indeterminate
@@ -3454,6 +3460,7 @@ id progress_circular
 id progress_horizontal
 id radio
 id ratio
+id recommendationText
 id rectangles
 id report_drawn
 id reverseSawtooth
@@ -3543,6 +3550,7 @@ id tag_window_insets_animation_callback
 id task1
 id task2
 id task3
+id taskSelector
 id text
 id text2
 id textEnd
@@ -3595,6 +3603,7 @@ id west
 id withText
 id with_icon
 id withinBounds
+id workoutChart
 id wrap
 id wrap_content
 id wrap_content_constrained
@@ -3716,9 +3725,9 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
-layout activity_calendar
 layout activity_daily_goals
 layout activity_goal_tracking
+layout activity_graphing
 layout activity_login
 layout activity_main
 layout activity_meal_tracking
@@ -3804,7 +3813,6 @@ layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 menu toolbar_menu
 mipmap ic_launcher
-mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
 string abc_action_bar_home_description

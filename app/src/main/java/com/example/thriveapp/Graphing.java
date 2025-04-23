@@ -5,6 +5,10 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
@@ -28,83 +32,107 @@ import java.util.List;
 import java.util.Map;
 
 public class Graphing extends AppCompatActivity {
-    private DatabaseHelper dbHelper; // For user info
-    private DatabaseTaskHelper taskHelper; // For workout logs
-    private Map<Float, Integer> workoutTimeMap = new HashMap<>(); // hour -> reps
+    private DatabaseHelper dbHelper;
+    private DatabaseTaskHelper taskHelper;
+    private Map<Float, String> timestampMap = new HashMap<>(); // x -> date map for graph points
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calendar);
+        setContentView(R.layout.activity_graphing); // Set layout file for this screen
 
+        // Set up toolbar
         Toolbar toolbar = findViewById(R.id.appBar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+        if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
 
+        // Handle padding for system UI
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        dbHelper = new DatabaseHelper(this); // user info
-        taskHelper = new DatabaseTaskHelper(this); // workout tasks
+        // Init helpers for DB and logic
+        dbHelper = new DatabaseHelper(this);
+        taskHelper = new DatabaseTaskHelper(this);
 
-        drawWorkoutGraph(); // show dynamic graph
-        showUserGoalRecommendation(); // show AI plan
+        setupTaskSpinner(); // Show dropdown to choose exercise
     }
 
-    // Show workout logs dynamically on graph
-    private void drawWorkoutGraph() {
+    // Setup dropdown spinner to choose a task to graph
+    private void setupTaskSpinner() {
+        Spinner spinner = findViewById(R.id.taskSelector);
+        String[] tasks = taskHelper.getAllTasks(); // Fetch available task names from DB
+
+        if (tasks == null || tasks.length == 0) return;
+
+        // Bind data to the spinner
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, tasks);
+        spinner.setAdapter(adapter);
+
+        // Set what happens when user selects a task
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedTask = parent.getItemAtPosition(position).toString();
+                drawWorkoutGraph(selectedTask); // Draw graph for selected task
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+    }
+
+    // Draw a workout graph using data for selected task
+    private void drawWorkoutGraph(String taskName) {
         LineChart chart = findViewById(R.id.workoutChart);
         List<Entry> entries = new ArrayList<>();
+        timestampMap.clear(); // Clear old points
+        System.out.println("kree3m");
+        // Get data from DB for selected task
+        int[] reps = taskHelper.getRepsData(taskName);
+        System.out.println(taskName);
+        String[] dates = taskHelper.getDateArray(taskName);
+        if (reps == null || dates == null) return;
+        System.out.println("kreem");
 
-        // Fetch all task names
-        String[] tasks = taskHelper.getAllTasks();
-        for (String taskName : tasks) {
-            if (taskName == null) continue;
-            int[] repsArray = taskHelper.getData(taskName); // reps data
-            if (repsArray == null) continue;
-
-            // simulate each entry as a different hour of day
-            float hour = 17f + entries.size();
-            int totalReps = 0;
-            for (int rep : repsArray) {
-                totalReps += rep;
-            }
-            workoutTimeMap.put(hour, totalReps); // map for details
-            entries.add(new Entry(hour, totalReps)); // add to graph
+        // Add each point to graph
+        for (int i = 0; i < reps.length; i++) {
+            entries.add(new Entry(i, reps[i]));
+            timestampMap.put((float) i, i < dates.length ? dates[i] : "Unknown");
         }
 
-        LineDataSet dataSet = new LineDataSet(entries, "Workout Summary");
+        // Style the line graph
+        LineDataSet dataSet = new LineDataSet(entries, taskName + " Reps");
         dataSet.setColor(Color.BLUE);
-        dataSet.setValueTextColor(Color.BLACK);
         dataSet.setCircleColor(Color.RED);
         dataSet.setCircleRadius(6f);
+        dataSet.setValueTextColor(Color.BLACK);
         dataSet.setDrawValues(true);
 
         LineData lineData = new LineData(dataSet);
-        chart.setData(lineData);
+        chart.setData(lineData); // Add dataset to chart
 
+        // Configure chart's X-axis
         XAxis xAxis = chart.getXAxis();
         xAxis.setGranularity(1f);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
 
-        chart.getDescription().setEnabled(false);
-        chart.invalidate();
+        chart.getDescription().setEnabled(false); // Hide chart description
+        chart.invalidate(); // Refresh chart
 
-        // show details when clicking point
+        // Show pop-up info when point is tapped
         chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
             public void onValueSelected(Entry e, Highlight h) {
-                float hour = e.getX();
-                int reps = workoutTimeMap.containsKey(hour) ? workoutTimeMap.get(hour) : (int) e.getY();
-                new AlertDialog.Builder(Calendar.this)
-                        .setTitle("Workout Details")
-                        .setMessage("Time: " + (int) hour + ":00\nTotal Reps: " + reps + "\nLength: ~45 min")
+                float x = e.getX();
+                String timestamp = timestampMap.getOrDefault(x, "Unknown");
+
+                new AlertDialog.Builder(Graphing.this)
+                        .setTitle("Workout Info")
+                        .setMessage("Date: " + timestamp + "\nReps: " + (int) e.getY() + "\nLength: ~45 min")
                         .setPositiveButton("OK", null)
                         .show();
             }
@@ -114,43 +142,10 @@ public class Graphing extends AppCompatActivity {
         });
     }
 
-    // Show fitness recommendation based on user goal
-    private void showUserGoalRecommendation() {
-        SharedPreferences prefs = getSharedPreferences("UserSession", MODE_PRIVATE);
-        String email = prefs.getString("loggedInEmail", null);
-        if (email == null) return;
+    // Show recommendation text based on user's fitness goal
 
-        String goal = dbHelper.getUserGoal(email);
-        String recommendation = "";
 
-        if (goal == null) goal = "GENERAL FITNESS AND HEALTH";
-
-        switch (goal.toUpperCase()) {
-            case "LEANED / TONED":
-                recommendation = "Circuit training, cardio, calorie deficit, high protein.";
-                break;
-            case "BUILD MUSCLE":
-                recommendation = "Strength training, surplus diet, progressive overload.";
-                break;
-            case "STRENGTH & POWER":
-                recommendation = "Heavy low-rep lifts, balanced macros, moderate surplus.";
-                break;
-            case "ATHLETIC & AGILE":
-                recommendation = "Sprints, mobility, agility drills. Performance diet.";
-                break;
-            case "ENDURANCE & STAMINA":
-                recommendation = "Cardio like running/cycling, high carbs.";
-                break;
-            case "GENERAL FITNESS AND HEALTH":
-            default:
-                recommendation = "Cardio + weights + flexibility. Balanced clean eating.";
-                break;
-        }
-
-        TextView txt = findViewById(R.id.recommendationText);
-        txt.setText("Goal: " + goal + "\nPlan: " + recommendation);
-    }
-
+    // Handle top-left back button
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {

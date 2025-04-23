@@ -16,8 +16,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven(url = "https://jitpack.io") // ✅ Required for MPAndroidChart
+
     }
 }
+
 
 rootProject.name = "Thrive_Fitness_App"
 include(":app")
