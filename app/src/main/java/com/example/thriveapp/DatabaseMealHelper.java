@@ -17,7 +17,7 @@ public class DatabaseMealHelper extends SQLiteOpenHelper {
     private static final String COL_DATE = "date";//when the user logged their exercise
 
     public DatabaseMealHelper(Context context) {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, 2);
     }//make sure to increment version (last int value) each time the database structure is changed
 
     @Override

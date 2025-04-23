@@ -24,7 +24,7 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
 
 
     public DatabaseTaskHelper(Context context) {
-        super(context, DATABASE_NAME, null, 6);
+        super(context, DATABASE_NAME, null, 10);
     }//make sure to increment version (last int value) each time the database structure is changed
 
     @Override
@@ -108,7 +108,7 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT date FROM " + DATABASE_NAME + " WHERE task=?", new String[]{taskParam});
 
         if (cursor.moveToFirst()) { // If a user is found
-            String data = cursor.getString(1); // Get the user's name
+            String data = cursor.getString(0); // Get the user's name
             cursor.close();
             return data;
         }
@@ -155,7 +155,7 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT weight FROM " + DATABASE_NAME + " WHERE task=?", new String[]{taskParam});
 
         if (cursor.moveToFirst()) {
-            String data = cursor.getString(1);
+            String data = cursor.getString(0);
             cursor.close();
             return stringToIntArray(data);
         }
@@ -167,11 +167,11 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
     public int[] getRepsData(String taskParam) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT reps FROM " + DATABASE_NAME + " WHERE task="+taskParam, new String[]{taskParam});
-
+        Cursor cursor = db.rawQuery("SELECT reps FROM " + DATABASE_NAME + " WHERE task=?", new String[]{taskParam});
         if (cursor.moveToFirst()) {
-            String data = cursor.getString(1);
+            String data = cursor.getString(0);
             cursor.close();
+           data = data.replace("reps", "");
             return stringToIntArray(data);
         }
         cursor.close();
@@ -184,7 +184,7 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT time FROM " + DATABASE_NAME + " WHERE task=?", new String[]{taskParam});
 
         if (cursor.moveToFirst()) {
-            String data = cursor.getString(1);
+            String data = cursor.getString(0);
             cursor.close();
             return stringToDoubleArray(data);
         }
@@ -206,28 +206,27 @@ private String getCurrentDate(){
     return currentDate;
 }
     //adds data to task. string is task name, int data is the data to add to end of list
-public void addData(String task,int weight,int reps, double time){
+public void addData(String task,int weightInfo,int repsInfo, double timeInfo){
 
     SQLiteDatabase db = this.getWritableDatabase();
     ContentValues values = new ContentValues();
-    if(weight >=0){
+    if(weightInfo >=0){
         String weightDataString = getDataString(task,"weight");
-        System.out.println(weightDataString);
-        weightDataString += Integer.toString(weight);
+        weightDataString += Integer.toString(weightInfo);
         weightDataString += ",";
         values.put(COL_WEIGHT, weightDataString);
     }
 
-    if(reps >=0){
+    if(repsInfo >=0){
         String repsDataString = getDataString(task,"reps");
-        repsDataString += Integer.toString(reps);
+        repsDataString += Integer.toString(repsInfo);
         repsDataString += ",";
         values.put(COL_REPS, repsDataString);
     }
 
-    if(time >=0){
+    if(timeInfo >=0){
         String timeDataString = getDataString(task,"time");
-        timeDataString += Double.toString(time);
+        timeDataString += Double.toString(timeInfo);
         timeDataString += ",";
         values.put(COL_TIME, timeDataString);
     }
@@ -256,12 +255,21 @@ public String[] getAllTasks(){
 
 
     // gets the total reps by timestamp for graphing
-    public Cursor getWorkoutLogs() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("SELECT date, SUM(CAST(reps AS INTEGER)) FROM ThriveTaskDB1 GROUP BY date", null);
-    }
+
 
     // Fetch full stats (sets, duration, calories) for the clicked date
+
+    public String[] getDateArray(String taskName) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT date FROM ThriveTaskDB1 WHERE task=?", new String[]{taskName});
+        if (cursor.moveToFirst()) {
+            String[] split = cursor.getString(0).split(",");
+            cursor.close();
+            return split;
+        }
+        cursor.close();
+        return null;
+    }
     public Cursor getStatsByTime(String timestamp) {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT sets FROM ThriveTaskDB1 WHERE date=?", new String[]{timestamp});

@@ -7,7 +7,7 @@
     android:padding="16dp"
     android:background="@android:color/white">
 
-    <!-- Top toolbar (optional, if using ActionBar/Toolbar) -->
+    <!-- Top toolbar -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/appBar"
         android:layout_width="match_parent"
@@ -15,14 +15,21 @@
         android:background="?attr/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
+    <!-- NEW: Dropdown to select task -->
+    <Spinner
+        android:id="@+id/taskSelector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:padding="8dp"
+        android:spinnerMode="dropdown" />
+
     <!-- Line Chart -->
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/workoutChart"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_marginTop="16dp" />
-
-
 
     <!-- Text-based AI Recommendation -->
     <TextView
@@ -34,5 +41,5 @@
         android:textColor="@android:color/black"
         android:paddingTop="16dp"
         android:paddingBottom="16dp" />
-</LinearLayout>
 
+</LinearLayout>

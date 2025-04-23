@@ -4,7 +4,7 @@
             "outputFile": "com.example.thriveapp-mergeDebugResources-59:/values-am/values-am.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\saint\\.gradle\\caches\\8.11.1\\transforms\\215fba5088e8f912a80fd4bf1dae82db\\transformed\\appcompat-1.7.0\\res\\values-am\\values-am.xml",
+                    "source": "C:\\Users\\jacob\\.gradle\\caches\\8.11.1\\transforms\\55b6bcfde713351d822e19e843183150\\transformed\\appcompat-1.7.0\\res\\values-am\\values-am.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -21,24 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\saint\\.gradle\\caches\\8.11.1\\transforms\\3c50c450bc1beb6c18d4139af5d0f57b\\transformed\\ui-release\\res\\values-am\\values-am.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,188,265,357,453,535,613,696,778,856,934,1015,1085,1158,1231,1303,1383,1448",
-                        "endColumns": "82,76,91,95,81,77,82,81,77,77,80,69,72,72,71,79,64,115",
-                        "endOffsets": "183,260,352,448,530,608,691,773,851,929,1010,1080,1153,1226,1298,1378,1443,1559"
-                    },
-                    "to": {
-                        "startLines": "48,49,50,51,52,56,57,171,172,174,175,177,178,179,180,182,183,184",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "4261,4344,4421,4513,4609,4902,4980,15081,15163,15317,15395,15556,15626,15699,15772,15945,16025,16090",
-                        "endColumns": "82,76,91,95,81,77,82,81,77,77,80,69,72,72,71,79,64,115",
-                        "endOffsets": "4339,4416,4508,4604,4686,4975,5058,15158,15236,15390,15471,15621,15694,15767,15839,16020,16085,16201"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\saint\\.gradle\\caches\\8.11.1\\transforms\\7d039cd0e943d236d26124050aa265cb\\transformed\\foundation-release\\res\\values-am\\values-am.xml",
+                    "source": "C:\\Users\\jacob\\.gradle\\caches\\8.11.1\\transforms\\6d94cd4735b4e34e8b27dff06a5843b7\\transformed\\foundation-release\\res\\values-am\\values-am.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -55,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\saint\\.gradle\\caches\\8.11.1\\transforms\\0bf70a30ad53d9d101e6e28182ff0556\\transformed\\material-1.10.0\\res\\values-am\\values-am.xml",
+                    "source": "C:\\Users\\jacob\\.gradle\\caches\\8.11.1\\transforms\\95a88e7877cdf02d24ff10bca83a3f10\\transformed\\material-1.10.0\\res\\values-am\\values-am.xml",
                     "from": {
                         "startLines": "2,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -74,7 +57,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\saint\\.gradle\\caches\\8.11.1\\transforms\\cff98158677020593a8d6832c720e48d\\transformed\\core-1.13.1\\res\\values-am\\values-am.xml",
+                    "source": "C:\\Users\\jacob\\.gradle\\caches\\8.11.1\\transforms\\8a75a61ead7c77227b55b10228efde2b\\transformed\\ui-release\\res\\values-am\\values-am.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,188,265,357,453,535,613,696,778,856,934,1015,1085,1158,1231,1303,1383,1448",
+                        "endColumns": "82,76,91,95,81,77,82,81,77,77,80,69,72,72,71,79,64,115",
+                        "endOffsets": "183,260,352,448,530,608,691,773,851,929,1010,1080,1153,1226,1298,1378,1443,1559"
+                    },
+                    "to": {
+                        "startLines": "48,49,50,51,52,56,57,171,172,174,175,177,178,179,180,182,183,184",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "4261,4344,4421,4513,4609,4902,4980,15081,15163,15317,15395,15556,15626,15699,15772,15945,16025,16090",
+                        "endColumns": "82,76,91,95,81,77,82,81,77,77,80,69,72,72,71,79,64,115",
+                        "endOffsets": "4339,4416,4508,4604,4686,4975,5058,15158,15236,15390,15471,15621,15694,15767,15839,16020,16085,16201"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\jacob\\.gradle\\caches\\8.11.1\\transforms\\a70c9e041b4eddae8569465a3e011355\\transformed\\core-1.13.1\\res\\values-am\\values-am.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -91,7 +91,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\saint\\.gradle\\caches\\8.11.1\\transforms\\797ce271b4df4a44c82fabff7cdd23e0\\transformed\\material3-release\\res\\values-am\\values-am.xml",
+                    "source": "C:\\Users\\jacob\\.gradle\\caches\\8.11.1\\transforms\\b9ad64a1c6a95bc997edab59f03377c1\\transformed\\material3-release\\res\\values-am\\values-am.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

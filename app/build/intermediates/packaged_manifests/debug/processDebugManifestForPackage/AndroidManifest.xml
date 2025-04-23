@@ -38,7 +38,7 @@
         </activity>
         <activity android:name="com.example.thriveapp.SignupActivity" />
         <activity android:name="com.example.thriveapp.MainActivity" />
-        <activity android:name="com.example.thriveapp.Calendar" />
+        <activity android:name="com.example.thriveapp.Graphing" />
         <activity android:name="com.example.thriveapp.GoalTracking" />
         <activity android:name="com.example.thriveapp.MealTracking" />
         <activity android:name="com.example.thriveapp.DailyGoalsActivity" />

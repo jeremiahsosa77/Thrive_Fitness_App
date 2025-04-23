@@ -36,7 +36,6 @@ public class GoalTracking extends AppCompatActivity {
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            System.out.println("workding");
             if(!loaded){
                 listOfTasks();//makes list of buttons for each task
                 loaded = true;
@@ -88,7 +87,6 @@ public class GoalTracking extends AppCompatActivity {
             return;//empty
         }
         if(!dbTaskHelper.addTask(taskName)) {
-            System.out.println("Save not Successful");
             return;
         }
         Button taskButton = new Button (this);
@@ -118,7 +116,6 @@ public class GoalTracking extends AppCompatActivity {
         return false;
     }
     public void listOfTasks() {
-        System.out.println("Testing");
         String[] tasks = dbTaskHelper.getAllTasks();
         for (var taskName : tasks) {
             // android:id="@+id/buttonContainer";
