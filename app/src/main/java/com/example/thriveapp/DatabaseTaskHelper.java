@@ -83,7 +83,9 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
         }
         return dataArray;
     }
-    private double[] stringTodoubleArray(String dataString){//doesnt work
+
+    //converts the string data to a usable array type double
+    private double[] stringToDoubleArray(String dataString){
         double[] dataArray = new double[dataString.length()];
         String numberString ="";
         int y = 0; //position in int array
@@ -118,7 +120,7 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
 
 
     // Adds new task to database. string parameter is name of task
-    public boolean addTask(String task) {// doesnt seem to work
+    public boolean addTask(String task) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COL_TASK, task);
@@ -131,16 +133,14 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
         return result != -1; // Returns true if successful
     }
 
-    //currently gets the String version of the user data from the database
+    //gets the String version of the user data from the database
     private String getDataString(String taskName, String dataType) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        //probably doesnt work since i dont know how rawQuery works
-//        Cursor cursor = db.rawQuery("SELECT "+ dataType+" FROM "+DATABASE_NAME+" WHERE task="+taskName, new String[]{taskName});
+
         Cursor cursor = db.rawQuery("SELECT '"+dataType+ "' FROM "+DATABASE_NAME+" WHERE  task=?", new String[]{taskName});
-        System.out.println("Worked");
-        if (cursor.moveToFirst()) { // If a user is found
-            String data = cursor.getString(0); // Get the user's name
+        if (cursor.moveToFirst()) { // If data is found
+            String data = cursor.getString(0); // Get the data
             cursor.close();
             return data;
         }
@@ -154,47 +154,52 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
 
         Cursor cursor = db.rawQuery("SELECT weight FROM " + DATABASE_NAME + " WHERE task=?", new String[]{taskParam});
 
-        if (cursor.moveToFirst()) { // If a user is found
-            String data = cursor.getString(1); // Get the user's name
+        if (cursor.moveToFirst()) {
+            String data = cursor.getString(1);
             cursor.close();
             return stringToIntArray(data);
         }
         cursor.close();
         return null; // Return null if user not found
     }
+
+    //get number of repetitions for a task
     public int[] getRepsData(String taskParam) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery("SELECT reps FROM " + DATABASE_NAME + " WHERE task="+taskParam, new String[]{taskParam});
 
-        if (cursor.moveToFirst()) { // If a user is found
-            String data = cursor.getString(1); // Get the user's name
+        if (cursor.moveToFirst()) {
+            String data = cursor.getString(1);
             cursor.close();
             return stringToIntArray(data);
         }
         cursor.close();
         return null; // Return null if user not found
     }
+    //gets data related to the time a task was completed in
     public double[] getTimeData(String taskParam) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery("SELECT time FROM " + DATABASE_NAME + " WHERE task=?", new String[]{taskParam});
 
-        if (cursor.moveToFirst()) { // If db found
-            String data = cursor.getString(1); // Get the user's name
+        if (cursor.moveToFirst()) {
+            String data = cursor.getString(1);
             cursor.close();
-            return stringTodoubleArray(data);
+            return stringToDoubleArray(data);
         }
         cursor.close();
         return null; // Return null if unsuccessful
     }
+
+    //get the current date to go along with when information was logged
 private String getCurrentDate(){
     Calendar calendar = Calendar.getInstance();
     Date date = new Date();
     calendar.setTime(date);
     int month = calendar.get(Calendar.MONTH);
-    int day = calendar.get(calendar.DAY_OF_MONTH) + 1;
-    int year = calendar.get(calendar.YEAR);
+    int day = calendar.get(Calendar.DAY_OF_MONTH) + 1;
+    int year = calendar.get(Calendar.YEAR);
     String currentDate = "";
     currentDate = month + "/" + day + "/" + year;
 
@@ -202,7 +207,6 @@ private String getCurrentDate(){
 }
     //adds data to task. string is task name, int data is the data to add to end of list
 public void addData(String task,int weight,int reps, double time){
-        System.out.println("AWAWAW");
 
     SQLiteDatabase db = this.getWritableDatabase();
     ContentValues values = new ContentValues();
@@ -231,7 +235,7 @@ public void addData(String task,int weight,int reps, double time){
     db.update(DATABASE_NAME, values, "task=?", new String[]{task});
 }
 //get all task names to create appropriate buttons
-public String[] getAllTasks(){ //this seems to work fine, information seems to not being added. check addTask()
+public String[] getAllTasks(){
     String[] taskNames = new String[getNumberOfRows()];
     String selectQuery = "SELECT task FROM " + DATABASE_NAME;
     int arrayPosition = 0;
