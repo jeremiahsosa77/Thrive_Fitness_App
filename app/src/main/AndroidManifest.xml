@@ -24,7 +24,7 @@
         </activity>
         <activity android:name=".SignupActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Calendar" />
+        <activity android:name=".Graphing" />
         <activity android:name=".GoalTracking" />
         <activity android:name=".MealTracking" />
         <activity android:name=".DailyGoalsActivity" />
