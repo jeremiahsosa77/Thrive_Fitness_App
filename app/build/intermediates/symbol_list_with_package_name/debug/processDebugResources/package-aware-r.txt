@@ -1419,6 +1419,7 @@ color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
 color foreground_material_light
+color graph_image_background
 color highlighted_text_material_dark
 color highlighted_text_material_light
 color ic_launcher_background
@@ -2968,6 +2969,7 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable dividor
 drawable dumbell
+drawable graph_image_foreground
 drawable ic_arrow_back_black_24
 drawable ic_call_answer
 drawable ic_call_answer_low
@@ -3314,6 +3316,7 @@ id image
 id imageView
 id imageView4
 id imageView5
+id imageView9
 id immediateStop
 id included
 id indeterminate
@@ -3812,6 +3815,8 @@ layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 menu toolbar_menu
+mipmap graph_image
+mipmap graph_image_round
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description

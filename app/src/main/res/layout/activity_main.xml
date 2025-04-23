@@ -120,5 +120,14 @@
         app:layout_constraintTop_toTopOf="@+id/MealTrackingButton"
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/GraphButton"
+        app:layout_constraintStart_toStartOf="@+id/GraphButton"
+        app:layout_constraintTop_toTopOf="@+id/GraphButton"
+        app:srcCompat="@drawable/graph_image_foreground" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

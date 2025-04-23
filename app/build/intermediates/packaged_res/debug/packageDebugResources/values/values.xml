@@ -6,6 +6,7 @@
     <color name="body_text">#757575</color>
     <color name="button_text">#FFFFFF</color>
     <color name="dark_text">#212121</color>
+    <color name="graph_image_background">#3DDC84</color>
     <color name="ic_launcher_background">#3DDC84</color>
     <color name="light_gray">#F5F5F5</color>
     <color name="primary_green">#2E7D32</color>
