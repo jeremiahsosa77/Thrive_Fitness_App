@@ -6,13 +6,13 @@
 
 ## Features
 
-- **User Authentication**: Email/password and Google Sign-In via Firebase Authentication.
-- **Workout Logging**: Log exercises, sets, reps, weights, and photos for verification.
+- **User Authentication**: Email/password login via SQLite.
+- **Workout Logging**: Log weight, reps, and time taken for exercises.
 - **Meal Tracking**: Track daily caloric intake and macronutrients.
 - **Progress Tracking**: Monitor weight changes, workout progress, and meal logs on a calendar-based UI.
-- **Personalized Recommendations**: AI-powered workout and meal suggestions using the **Surprise Library**.
+- **Daily Goals**: Daily tasks for the user to accomplish with a streak counter.
+- **Personalized Recommendations**: AI-powered workout and meal suggestions.
 - **Coach Rocky (AI Chatbot)**: Real-time responses from an AI-powered chatbot to motivate and guide users.
-- **Virtual Pet System**: Customizable pet that responds to user progress and provides motivational feedback.
 
 ---
 
@@ -20,18 +20,13 @@
 
 - **Frontend**:  
   - Android Studio  
-  - Java (Programming Language)  
-  - Firebase (Authentication, Firestore, Cloud Messaging)  
-  - Room (Local Database)
-
+  - Java (Programming Language)
+    
 - **Backend**:  
-  - Firebase Firestore (Cloud Database)  
-  - Firebase Cloud Messaging (Push Notifications)  
-  - AI Chatbot Integration (Llama 3 or Surprise Library)
+  - SQLite
 
 - **Testing**:  
   - JUnit (Unit Testing)  
-  - Espresso (UI Testing)
 
 ---
 
