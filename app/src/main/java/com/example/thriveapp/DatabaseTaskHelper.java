@@ -253,4 +253,18 @@ public String[] getAllTasks(){
     return taskNames;
 }
 
+
+
+    // gets the total reps by timestamp for graphing
+    public Cursor getWorkoutLogs() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT date, SUM(CAST(reps AS INTEGER)) FROM ThriveTaskDB1 GROUP BY date", null);
+    }
+
+    // Fetch full stats (sets, duration, calories) for the clicked date
+    public Cursor getStatsByTime(String timestamp) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT sets FROM ThriveTaskDB1 WHERE date=?", new String[]{timestamp});
+    }
+
 }

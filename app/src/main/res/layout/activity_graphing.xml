@@ -22,6 +22,8 @@
         android:layout_height="300dp"
         android:layout_marginTop="16dp" />
 
+
+
     <!-- Text-based AI Recommendation -->
     <TextView
         android:id="@+id/recommendationText"
@@ -32,14 +34,5 @@
         android:textColor="@android:color/black"
         android:paddingTop="16dp"
         android:paddingBottom="16dp" />
-
 </LinearLayout>
-strings.xml(res/values/strings.xml):
-<string-array name="fitness_goals">
-    <item>LEANED / TONED</item>
-    <item>BUILD MUSCLE</item>
-    <item>STRENGTH & POWER</item>
-    <item>ATHLETIC & AGILE</item>
-    <item>ENDURANCE & STAMINA</item>
-    <item>GENERAL FITNESS AND HEALTH</item>
-</string-array>
+
