@@ -56,12 +56,21 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // Meal tracking button
         Button MealTrackingButton = findViewById(R.id.MealTrackingButton);
         MealTrackingButton.setOnClickListener(v -> {
             System.out.println("works here");
             Intent intent = new Intent(this, MealTracking.class);
             startActivity(intent);
         });
+
+        // Daily goals button
+        Button dailyGoalsButton = findViewById(R.id.DailyGoalsButton);
+        dailyGoalsButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, DailyGoalsActivity.class);
+            startActivity(intent);
+        });
+
 
     } // end of onCreate
 

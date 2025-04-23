@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:2:1-31:12
-INJECTED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:2:1-31:12
-INJECTED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:2:1-31:12
-INJECTED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:2:1-31:12
+ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:2:1-35:12
 MERGED from [com.google.android.material:material:1.10.0] C:\Users\saint\.gradle\caches\8.11.1\transforms\0bf70a30ad53d9d101e6e28182ff0556\transformed\material-1.10.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\saint\.gradle\caches\8.11.1\transforms\22ff629be5eeebc1d288d9616e7eb517\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat-resources:1.7.0] C:\Users\saint\.gradle\caches\8.11.1\transforms\5a78f7b88fc6e075c856a56b43efd77b\transformed\appcompat-resources-1.7.0\AndroidManifest.xml:2:1-7:12
@@ -88,8 +88,8 @@ MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\saint\.gradle\cache
 	xmlns:android
 		ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:5:5-29:19
-INJECTED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:5:5-29:19
+ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:5:5-33:19
+INJECTED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:5:5-33:19
 MERGED from [com.google.android.material:material:1.10.0] C:\Users\saint\.gradle\caches\8.11.1\transforms\0bf70a30ad53d9d101e6e28182ff0556\transformed\material-1.10.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.10.0] C:\Users\saint\.gradle\caches\8.11.1\transforms\0bf70a30ad53d9d101e6e28182ff0556\transformed\material-1.10.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\saint\.gradle\caches\8.11.1\transforms\22ff629be5eeebc1d288d9616e7eb517\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -133,37 +133,45 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\sa
 	android:dataExtractionRules
 		ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:7:9-65
 activity#com.example.thriveapp.LoginActivity
-ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:15:9-22:20
+ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:16:9-24:20
 	android:exported
-		ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:17:13-36
+		ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:18:13-36
 	android:name
-		ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:16:13-42
+		ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:17:13-42
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:18:13-21:29
+ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:19:13-23:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:19:17-69
+ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:20:17-69
 	android:name
-		ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:19:25-66
+		ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:20:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:20:17-77
+ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:22:17-77
 	android:name
-		ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:20:27-74
+		ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:22:27-74
 activity#com.example.thriveapp.SignupActivity
-ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:23:9-51
+ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:25:9-52
 	android:name
-		ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:23:19-49
+		ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:25:19-49
 activity#com.example.thriveapp.MainActivity
-ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:24:9-49
-	android:name
-		ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:24:19-47
-activity#com.example.thriveapp.Calendar
-ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:25:9-45
-	android:name
-		ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:25:19-43
-activity#com.example.thriveapp.GoalTracking
-ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:26:9-49
+ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:26:9-50
 	android:name
 		ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:26:19-47
+activity#com.example.thriveapp.Calendar
+ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:27:9-46
+	android:name
+		ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:27:19-43
+activity#com.example.thriveapp.GoalTracking
+ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:28:9-50
+	android:name
+		ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:28:19-47
+activity#com.example.thriveapp.MealTracking
+ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:29:9-50
+	android:name
+		ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:29:19-47
+activity#com.example.thriveapp.DailyGoalsActivity
+ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:30:9-56
+	android:name
+		ADDED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml:30:19-53
 uses-sdk
 INJECTED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\saint\School\HennyHustlers\Thrive_Fitness_App\app\src\main\AndroidManifest.xml

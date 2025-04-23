@@ -27,6 +27,8 @@
         <activity android:name=".Calendar" />
         <activity android:name=".GoalTracking" />
         <activity android:name=".MealTracking" />
+        <activity android:name=".DailyGoalsActivity" />
+
 
     </application>
 

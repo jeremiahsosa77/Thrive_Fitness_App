@@ -2958,11 +2958,13 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable button_rounded
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable dividor
 drawable ic_arrow_back_black_24
 drawable ic_call_answer
 drawable ic_call_answer_low
@@ -3060,14 +3062,18 @@ drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 id ALT
+id AddNutrientButton
 id BOTTOM_END
 id BOTTOM_START
 id CTRL
-id DataField
+id DailyGoalsButton
 id ExerciseName
 id FUNCTION
 id META
+id MealTrackingButton
 id NO_DEBUG
+id NutrientName
+id NutrientNameInput
 id SHIFT
 id SHOW_ALL
 id SHOW_PATH
@@ -3133,6 +3139,7 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id addTaskButton
 id alertTitle
 id aligned
 id all
@@ -3163,9 +3170,7 @@ id bounceBoth
 id bounceEnd
 id bounceStart
 id button
-id button2
-id button3
-id button4
+id buttonContainer
 id buttonPanel
 id cache_measures
 id calendarButton
@@ -3211,6 +3216,8 @@ id currentState
 id custom
 id customPanel
 id cut
+id dataField
+id dataType
 id date_picker_actions
 id decelerate
 id decelerateAndComplete
@@ -3277,6 +3284,7 @@ id frost
 id fullscreen_header
 id ghost_view
 id ghost_view_holder
+id goalsContainer
 id gone
 id graph
 id graph_wrap
@@ -3393,6 +3401,7 @@ id navigation_header_container
 id never
 id neverCompleteToEnd
 id neverCompleteToStart
+id newTaskNameInput
 id noScroll
 id noState
 id none
@@ -3509,6 +3518,7 @@ id startVertical
 id staticLayout
 id staticPostLayout
 id stop
+id streakText
 id stretch
 id submenuarrow
 id submit_area
@@ -3527,6 +3537,9 @@ id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id tag_window_insets_animation_callback
+id task1
+id task2
+id task3
 id text
 id text2
 id textEnd
@@ -3534,7 +3547,6 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
-id textView5
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -3549,6 +3561,7 @@ id title
 id titleDividerNoCustom
 id title_template
 id toggle
+id toolbar
 id top
 id topPanel
 id touch_outside
@@ -3701,9 +3714,11 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_calendar
+layout activity_daily_goals
 layout activity_goal_tracking
 layout activity_login
 layout activity_main
+layout activity_meal_tracking
 layout activity_signup
 layout custom_dialog
 layout design_bottom_navigation_item

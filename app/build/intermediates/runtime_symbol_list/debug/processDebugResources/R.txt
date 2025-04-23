@@ -2957,11 +2957,13 @@ int drawable btn_radio_off_mtrl 0x7f07007e
 int drawable btn_radio_off_to_on_mtrl_animation 0x7f07007f
 int drawable btn_radio_on_mtrl 0x7f070080
 int drawable btn_radio_on_to_off_mtrl_animation 0x7f070081
+int drawable button_rounded 0x7f0700e7
 int drawable design_fab_background 0x7f070082
 int drawable design_ic_visibility 0x7f070083
 int drawable design_ic_visibility_off 0x7f070084
 int drawable design_password_eye 0x7f070085
 int drawable design_snackbar_background 0x7f070086
+int drawable dividor 0x7f0700e8
 int drawable ic_arrow_back_black_24 0x7f070087
 int drawable ic_call_answer 0x7f070088
 int drawable ic_call_answer_low 0x7f070089
@@ -3059,14 +3061,18 @@ int drawable test_level_drawable 0x7f0700e4
 int drawable tooltip_frame_dark 0x7f0700e5
 int drawable tooltip_frame_light 0x7f0700e6
 int id ALT 0x7f080000
+int id AddNutrientButton 0x7f080215
 int id BOTTOM_END 0x7f080001
 int id BOTTOM_START 0x7f080002
 int id CTRL 0x7f080003
-int id DataField 0x7f080004
+int id DailyGoalsButton 0x7f080219
 int id ExerciseName 0x7f080005
 int id FUNCTION 0x7f080006
 int id META 0x7f080007
+int id MealTrackingButton 0x7f080216
 int id NO_DEBUG 0x7f080008
+int id NutrientName 0x7f080217
+int id NutrientNameInput 0x7f080218
 int id SHIFT 0x7f080009
 int id SHOW_ALL 0x7f08000a
 int id SHOW_PATH 0x7f08000b
@@ -3132,6 +3138,7 @@ int id action_text 0x7f080046
 int id actions 0x7f080047
 int id activity_chooser_view_content 0x7f080048
 int id add 0x7f080049
+int id addTaskButton 0x7f08020e
 int id alertTitle 0x7f08004a
 int id aligned 0x7f08004b
 int id all 0x7f08004c
@@ -3162,9 +3169,7 @@ int id bounceBoth 0x7f080064
 int id bounceEnd 0x7f080065
 int id bounceStart 0x7f080066
 int id button 0x7f080067
-int id button2 0x7f080068
-int id button3 0x7f080069
-int id button4 0x7f08006a
+int id buttonContainer 0x7f080210
 int id buttonPanel 0x7f08006b
 int id cache_measures 0x7f08006c
 int id calendarButton 0x7f08006d
@@ -3210,6 +3215,8 @@ int id currentState 0x7f080094
 int id custom 0x7f080095
 int id customPanel 0x7f080096
 int id cut 0x7f080097
+int id dataField 0x7f080213
+int id dataType 0x7f080214
 int id date_picker_actions 0x7f080098
 int id decelerate 0x7f080099
 int id decelerateAndComplete 0x7f08009a
@@ -3276,6 +3283,7 @@ int id frost 0x7f0800d6
 int id fullscreen_header 0x7f0800d7
 int id ghost_view 0x7f0800d8
 int id ghost_view_holder 0x7f0800d9
+int id goalsContainer 0x7f08021a
 int id gone 0x7f0800da
 int id graph 0x7f0800db
 int id graph_wrap 0x7f0800dc
@@ -3392,6 +3400,7 @@ int id navigation_header_container 0x7f08014a
 int id never 0x7f08014b
 int id neverCompleteToEnd 0x7f08014c
 int id neverCompleteToStart 0x7f08014d
+int id newTaskNameInput 0x7f080212
 int id noScroll 0x7f08014e
 int id noState 0x7f08014f
 int id none 0x7f080150
@@ -3508,6 +3517,7 @@ int id startVertical 0x7f0801be
 int id staticLayout 0x7f0801bf
 int id staticPostLayout 0x7f0801c0
 int id stop 0x7f0801c1
+int id streakText 0x7f080220
 int id stretch 0x7f0801c2
 int id submenuarrow 0x7f0801c3
 int id submit_area 0x7f0801c4
@@ -3526,6 +3536,9 @@ int id tag_transition_group 0x7f0801d0
 int id tag_unhandled_key_event_manager 0x7f0801d1
 int id tag_unhandled_key_listeners 0x7f0801d2
 int id tag_window_insets_animation_callback 0x7f0801d3
+int id task1 0x7f08021b
+int id task2 0x7f08021c
+int id task3 0x7f08021d
 int id text 0x7f0801d4
 int id text2 0x7f0801d5
 int id textEnd 0x7f0801d6
@@ -3533,7 +3546,6 @@ int id textSpacerNoButtons 0x7f0801d7
 int id textSpacerNoTitle 0x7f0801d8
 int id textStart 0x7f0801d9
 int id textTop 0x7f0801da
-int id textView5 0x7f0801db
 int id text_input_end_icon 0x7f0801dc
 int id text_input_error_icon 0x7f0801dd
 int id text_input_start_icon 0x7f0801de
@@ -3548,6 +3560,7 @@ int id title 0x7f0801e6
 int id titleDividerNoCustom 0x7f0801e7
 int id title_template 0x7f0801e8
 int id toggle 0x7f0801e9
+int id toolbar 0x7f08021f
 int id top 0x7f0801ea
 int id topPanel 0x7f0801eb
 int id touch_outside 0x7f0801ec
@@ -3700,9 +3713,11 @@ int layout abc_search_view 0x7f0b0019
 int layout abc_select_dialog_material 0x7f0b001a
 int layout abc_tooltip 0x7f0b001b
 int layout activity_calendar 0x7f0b001c
+int layout activity_daily_goals 0x7f0b0071
 int layout activity_goal_tracking 0x7f0b001d
 int layout activity_login 0x7f0b001e
 int layout activity_main 0x7f0b001f
+int layout activity_meal_tracking 0x7f0b0070
 int layout activity_signup 0x7f0b0020
 int layout custom_dialog 0x7f0b0021
 int layout design_bottom_navigation_item 0x7f0b0022

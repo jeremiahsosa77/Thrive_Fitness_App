@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/goalsContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Toolbar for streak & back button -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary_green"
+        app:titleTextColor="@color/white"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+        <TextView
+            android:id="@+id/streakText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🔥 Streak: 0"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:layout_gravity="end"
+            android:paddingEnd="16dp" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:gravity="top">
+
+        <!-- Daily Task Checkboxes -->
+        <CheckBox
+            android:id="@+id/task1"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Walk 5,000 steps"
+            android:textSize="18sp"
+            android:padding="8dp" />
+
+        <CheckBox
+            android:id="@+id/task2"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Do 25 push ups"
+            android:textSize="18sp"
+            android:padding="8dp" />
+
+        <CheckBox
+            android:id="@+id/task3"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Drink 8 cups of water"
+            android:textSize="18sp"
+            android:padding="8dp" />
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

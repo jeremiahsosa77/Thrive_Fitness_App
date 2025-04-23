@@ -15,6 +15,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL_EMAIL = "email";
     private static final String COL_PASSWORD = "password";
 
+    // TODO: Daily streak column
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
