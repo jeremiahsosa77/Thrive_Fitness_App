@@ -7,17 +7,30 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- Toolbar for the app header -->
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/appBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <!-- This view acts as the green background block -->
+    <View
+        android:id="@+id/topBackground"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
         android:background="@color/primary_green"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintTop_toTopOf="parent"
-        app:titleTextColor="@color/button_text" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Logo on top -->
+
+    <!-- Toolbar below the logo -->
+    <ImageView
+        android:id="@+id/thriveLogo"
+        android:layout_width="120dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="28dp"
+        android:contentDescription="THRIVE Logo"
+        android:src="@drawable/thrive_logo_thrive_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <!-- Fitness Tracking Button -->
@@ -28,17 +41,31 @@
 
     <!-- Daily Goals Button -->
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/appBar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/thriveLogo" />
+
     <Button
         android:id="@+id/fitnessTrackingButton"
         android:layout_width="200dp"
         android:layout_height="120dp"
         android:layout_marginTop="24dp"
-        android:backgroundTint="@color/secondary_green"
+        android:backgroundTint="@color/primary_green"
         android:gravity="bottom|center"
         android:text="Fitness Tracking"
         android:textColor="@color/button_text"
         android:textSize="20dp"
-        app:cornerRadius="0dp"
+        android:elevation="12dp"
+        app:strokeColor="@color/secondary_green"
+        app:strokeWidth="3dp"
+        app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,12 +76,15 @@
         android:layout_width="200dp"
         android:layout_height="120dp"
         android:layout_marginTop="68dp"
-        android:backgroundTint="@color/secondary_green"
+        android:backgroundTint="@color/primary_green"
         android:gravity="bottom|center"
         android:text="Graphing"
         android:textColor="@color/button_text"
         android:textSize="20dp"
-        app:cornerRadius="0dp"
+        android:elevation="12dp"
+        app:strokeColor="@color/secondary_green"
+        app:strokeWidth="3dp"
+        app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,12 +95,14 @@
         android:layout_width="200dp"
         android:layout_height="120dp"
         android:layout_marginTop="20dp"
-        android:backgroundTint="#69BA6D"
+        android:backgroundTint="@color/primary_green"
         android:gravity="bottom|center"
-        android:paddingVertical="0dp"
         android:text="Meal Tracking"
         android:textSize="20dp"
-        app:cornerRadius="0dp"
+        android:elevation="12dp"
+        app:strokeColor="@color/secondary_green"
+        app:strokeWidth="3dp"
+        app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,11 +113,14 @@
         android:layout_width="200dp"
         android:layout_height="120dp"
         android:layout_marginTop="24dp"
-        android:backgroundTint="#69BA6D"
+        android:backgroundTint="@color/primary_green"
         android:gravity="bottom|center"
         android:text="Daily Goals"
         android:textSize="20dp"
-        app:cornerRadius="0dp"
+        android:elevation="12dp"
+        app:strokeColor="@color/secondary_green"
+        app:strokeWidth="3dp"
+        app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
