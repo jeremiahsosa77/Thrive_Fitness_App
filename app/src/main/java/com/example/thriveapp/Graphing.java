@@ -1,7 +1,6 @@
 package com.example.thriveapp;
 
 import android.app.AlertDialog;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -9,7 +8,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,10 +34,14 @@ public class Graphing extends AppCompatActivity {
     private DatabaseTaskHelper taskHelper;
     private Map<Float, String> timestampMap = new HashMap<>(); // x -> date map for graph points
 
+    private String taskName;// = taskHelper.getAllTasks()[0];
+    private String taskCategory;// = "Weight";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graphing); // Set layout file for this screen
+
 
         // Set up toolbar
         Toolbar toolbar = findViewById(R.id.appBar);
@@ -63,21 +65,42 @@ public class Graphing extends AppCompatActivity {
 
     // Setup dropdown spinner to choose a task to graph
     private void setupTaskSpinner() {
-        Spinner spinner = findViewById(R.id.taskSelector);
+
+        Spinner spinnerTask = findViewById(R.id.TaskSelector);
         String[] tasks = taskHelper.getAllTasks(); // Fetch available task names from DB
+
+        Spinner spinnerCategory = findViewById(R.id.CategorySelector);
+        String[] categories = {"Weight", "Repetitions", "Time"};
+
+        //global variables. Placed here instead of onCreate for convenience
+        taskName = tasks[0];
+        taskCategory = categories[0];
 
         if (tasks == null || tasks.length == 0) return;
 
-        // Bind data to the spinner
+        // Bind data to spinnerTask
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, tasks);
-        spinner.setAdapter(adapter);
+        spinnerTask.setAdapter(adapter);
+
+        ArrayAdapter<String> adapterCategories = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categories);
+        spinnerCategory.setAdapter(adapterCategories);
 
         // Set what happens when user selects a task
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerTask.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedTask = parent.getItemAtPosition(position).toString();
-                drawWorkoutGraph(selectedTask); // Draw graph for selected task
+                taskName = parent.getItemAtPosition(position).toString();
+                drawWorkoutGraph(taskName, taskCategory); // Draw graph for selected task
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        spinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                taskCategory = parent.getItemAtPosition(position).toString();
+                drawWorkoutGraph(taskName,taskCategory); // Draw graph for selected task
             }
 
             @Override
@@ -86,23 +109,50 @@ public class Graphing extends AppCompatActivity {
     }
 
     // Draw a workout graph using data for selected task
-    private void drawWorkoutGraph(String taskName) {
+    private void drawWorkoutGraph(String taskName, String taskCategory) {
         LineChart chart = findViewById(R.id.workoutChart);
+
         List<Entry> entries = new ArrayList<>();
         timestampMap.clear(); // Clear old points
-        System.out.println("kree3m");
-        // Get data from DB for selected task
-        int[] reps = taskHelper.getRepsData(taskName);
-        System.out.println(taskName);
+        //list of dates the user logged activity
         String[] dates = taskHelper.getDateArray(taskName);
-        if (reps == null || dates == null) return;
-        System.out.println("kreem");
-
-        // Add each point to graph
-        for (int i = 0; i < reps.length; i++) {
-            entries.add(new Entry(i, reps[i]));
-            timestampMap.put((float) i, i < dates.length ? dates[i] : "Unknown");
+        //list of task data
+        int[] dataList;
+        //time is of type float so a different array is used
+        double[] timeDataList = taskHelper.getTimeData(taskName);
+        //get appropriate data for the task and category
+        switch(taskCategory){
+            case "Weight":
+                dataList = taskHelper.getWeightData(taskName);
+                break;
+            case "Repetitions":
+                dataList = taskHelper.getRepsData(taskName);
+                break;
+            default:
+                dataList = new int[]{0};
+                break;
         }
+
+        if(!taskCategory.equals("Time")){
+            if (dataList == null || dates == null) return;
+            // Add each point to graph
+            for (int i = 0; i < dataList.length; i++) {
+                entries.add(new Entry(i, dataList[i]));
+                //ternary function required for imported function
+                timestampMap.put((float) i, i < dates.length ? dates[i] : "Unknown");
+            }
+        }
+        else{
+            if(timeDataList == null || dates == null) return;
+
+            for(int i = 0; i < timeDataList.length;i++){
+                entries.add(new Entry(i, (float) timeDataList[i]));
+                //ternary function required for imported function
+                timestampMap.put((float) i, i < dates.length ? dates[i] : "Unknown");
+            }
+
+        }
+
 
         // Style the line graph
         LineDataSet dataSet = new LineDataSet(entries, taskName + " Reps");

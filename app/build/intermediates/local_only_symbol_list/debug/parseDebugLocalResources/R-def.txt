@@ -22,12 +22,14 @@ drawable sun_icon
 drawable thrive_logo
 drawable weight
 id AddNutrientButton
+id CategorySelector
 id DailyGoalsButton
 id ExerciseName
 id GraphButton
 id MealTrackingButton
 id NutrientName
 id NutrientNameInput
+id TaskSelector
 id action_logout
 id addTaskButton
 id appBar
@@ -57,7 +59,11 @@ id streakText
 id task1
 id task2
 id task3
-id taskSelector
+id task4
+id task5
+id task6
+id task7
+id task8
 id toolbar
 id workoutChart
 layout activity_daily_goals

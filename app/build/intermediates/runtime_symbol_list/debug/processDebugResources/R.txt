@@ -3073,6 +3073,7 @@ int id AddNutrientButton 0x7f080001
 int id BOTTOM_END 0x7f080002
 int id BOTTOM_START 0x7f080003
 int id CTRL 0x7f080004
+int id CategorySelector 0x7f080225
 int id DailyGoalsButton 0x7f080005
 int id ExerciseName 0x7f080006
 int id FUNCTION 0x7f080007
@@ -3089,6 +3090,7 @@ int id SHOW_PROGRESS 0x7f080011
 int id SYM 0x7f080012
 int id TOP_END 0x7f080013
 int id TOP_START 0x7f080014
+int id TaskSelector 0x7f080226
 int id accelerate 0x7f080015
 int id accessibility_action_clickable_span 0x7f080016
 int id accessibility_custom_action_0 0x7f080017
@@ -3552,7 +3554,11 @@ int id tag_window_insets_animation_callback 0x7f0801df
 int id task1 0x7f0801e0
 int id task2 0x7f0801e1
 int id task3 0x7f0801e2
-int id taskSelector 0x7f0801e3
+int id task4 0x7f080220
+int id task5 0x7f080221
+int id task6 0x7f080222
+int id task7 0x7f080223
+int id task8 0x7f080224
 int id text 0x7f0801e4
 int id text2 0x7f0801e5
 int id textEnd 0x7f0801e6

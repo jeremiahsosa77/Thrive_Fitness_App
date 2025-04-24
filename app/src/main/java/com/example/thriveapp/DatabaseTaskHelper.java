@@ -24,7 +24,7 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
 
 
     public DatabaseTaskHelper(Context context) {
-        super(context, DATABASE_NAME, null, 11);
+        super(context, DATABASE_NAME, null, 145);
     }//make sure to increment version (last int value) each time the database structure is changed
 
     @Override
@@ -47,7 +47,7 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
 
     //gets number of exercises/rows in the database
     private int getNumberOfRows() {
-        String countQuery = "SELECT  * FROM " + DATABASE_NAME;
+        String countQuery = "SELECT * FROM " + DATABASE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
         int count = cursor.getCount();
@@ -68,35 +68,24 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
     }
 
     //converts the string version of task data into an array of its
-    private int[] stringToIntArray(String dataString){
-        int[] dataArray = new int[dataString.length()];
-        String numberString ="";
-        int y = 0; //position in int array
-        for(int i = 0; i < dataString.length();i++){
-            if(dataString.charAt(i) != ','){
-                numberString+= dataString.charAt(i);
-            }
-            else {
-                dataArray[y++] = Integer.parseInt(numberString);
-                i++;
-            }
+    private int[] stringToIntArray(String[] dataString){
+        int[] dataArray = new int[dataString.length];
+        int i = 0; //position in int array
+        for(String singleData : dataString){
+            dataArray[i++] = Integer.parseInt(singleData);
         }
+
+
         return dataArray;
     }
 
     //converts the string data to a usable array type double
-    private double[] stringToDoubleArray(String dataString){
-        double[] dataArray = new double[dataString.length()];
+    private double[] stringToDoubleArray(String[] dataString){
+        double[] dataArray = new double[dataString.length];
         String numberString ="";
-        int y = 0; //position in int array
-        for(int i = 0; i < dataString.length();i++){
-            if(dataString.charAt(i) != ','){
-                numberString+= dataString.charAt(i);
-            }
-            else {
-                dataArray[y++] = Double.parseDouble(numberString);
-                i++;
-            }
+        int i = 0; //position in int array
+        for(String singleData : dataString){
+            dataArray[i++] = Double.parseDouble(singleData);
         }
         return dataArray;
     }
@@ -138,7 +127,7 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
 
-        Cursor cursor = db.rawQuery("SELECT '"+dataType+ "' FROM "+DATABASE_NAME+" WHERE  task=?", new String[]{taskName});
+        Cursor cursor = db.rawQuery("SELECT "+dataType+ " FROM "+DATABASE_NAME+" WHERE  task=?", new String[]{taskName});
         if (cursor.moveToFirst()) { // If data is found
             String data = cursor.getString(0); // Get the data
             cursor.close();
@@ -155,7 +144,7 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT weight FROM " + DATABASE_NAME + " WHERE task=?", new String[]{taskParam});
 
         if (cursor.moveToFirst()) {
-            String data = cursor.getString(0);
+            String[] data = cursor.getString(0).split(",");
             cursor.close();
             return stringToIntArray(data);
         }
@@ -169,9 +158,8 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
 
         Cursor cursor = db.rawQuery("SELECT reps FROM " + DATABASE_NAME + " WHERE task=?", new String[]{taskParam});
         if (cursor.moveToFirst()) {
-            String data = cursor.getString(0);
+            String[] data = cursor.getString(0).split(",");
             cursor.close();
-           data = data.replace("reps", "");
             return stringToIntArray(data);
         }
         cursor.close();
@@ -184,7 +172,7 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT time FROM " + DATABASE_NAME + " WHERE task=?", new String[]{taskParam});
 
         if (cursor.moveToFirst()) {
-            String data = cursor.getString(0);
+            String[] data = cursor.getString(0).split(",");
             cursor.close();
             return stringToDoubleArray(data);
         }
@@ -222,6 +210,7 @@ public void addData(String task,int weightInfo,int repsInfo, double timeInfo){
         repsDataString += Integer.toString(repsInfo);
         repsDataString += ",";
         values.put(COL_REPS, repsDataString);
+        System.out.println(repsDataString);
     }
 
     if(timeInfo >=0){
@@ -230,7 +219,10 @@ public void addData(String task,int weightInfo,int repsInfo, double timeInfo){
         timeDataString += ",";
         values.put(COL_TIME, timeDataString);
     }
-    values.put(COL_DATE, getCurrentDate() + ",");
+    String dateDataString = getDataString(task,"date");
+    dateDataString += getCurrentDate();
+    dateDataString += ",";
+    values.put(COL_DATE, dateDataString);
     db.update(DATABASE_NAME, values, "task=?", new String[]{task});
 }
 //get all task names to create appropriate buttons
@@ -263,9 +255,12 @@ public String[] getAllTasks(){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT date FROM ThriveTaskDB1 WHERE task=?", new String[]{taskName});
         if (cursor.moveToFirst()) {
-            String[] split = cursor.getString(0).split(",");
+            String[] dates = cursor.getString(0).split(",");
             cursor.close();
-            return split;
+            for(String x : dates){
+                System.out.println(x);
+            }
+            return dates;
         }
         cursor.close();
         return null;

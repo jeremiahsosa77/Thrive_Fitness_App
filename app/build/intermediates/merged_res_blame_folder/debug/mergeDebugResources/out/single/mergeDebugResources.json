@@ -4,10 +4,6 @@
         "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\layout\\activity_goal_tracking.xml"
     },
     {
-        "merged": "com.example.thriveapp-debug-61:/drawable_graph_image_foreground.xml.flat",
-        "source": "com.example.thriveapp-main-63:/drawable/graph_image_foreground.xml"
-    },
-    {
         "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\xml_data_extraction_rules.xml.flat",
         "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\xml\\data_extraction_rules.xml"
     },
@@ -20,12 +16,16 @@
         "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\layout\\activity_graphing.xml"
     },
     {
-        "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\layout_activity_signup.xml.flat",
-        "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\layout\\activity_signup.xml"
+        "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\mipmap-hdpi_graph_image.webp.flat",
+        "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\mipmap-hdpi\\graph_image.webp"
     },
     {
         "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\mipmap-mdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\layout_activity_signup.xml.flat",
+        "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\layout\\activity_signup.xml"
     },
     {
         "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\layout_activity_daily_goals.xml.flat",
@@ -44,20 +44,8 @@
         "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\drawable\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.example.thriveapp-debug-61:/mipmap-anydpi-v26_graph_image.xml.flat",
-        "source": "com.example.thriveapp-main-63:/mipmap-anydpi-v26/graph_image.xml"
-    },
-    {
-        "merged": "com.example.thriveapp-debug-61:/mipmap-xhdpi_graph_image.webp.flat",
-        "source": "com.example.thriveapp-main-63:/mipmap-xhdpi/graph_image.webp"
-    },
-    {
-        "merged": "com.example.thriveapp-debug-61:/mipmap-xxhdpi_graph_image.webp.flat",
-        "source": "com.example.thriveapp-main-63:/mipmap-xxhdpi/graph_image.webp"
-    },
-    {
-        "merged": "com.example.thriveapp-debug-61:/mipmap-hdpi_graph_image_round.webp.flat",
-        "source": "com.example.thriveapp-main-63:/mipmap-hdpi/graph_image_round.webp"
+        "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\mipmap-xhdpi_graph_image.webp.flat",
+        "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\mipmap-xhdpi\\graph_image.webp"
     },
     {
         "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\mipmap-hdpi_ic_launcher.webp.flat",
@@ -68,14 +56,6 @@
         "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.thriveapp-debug-61:/mipmap-hdpi_graph_image.webp.flat",
-        "source": "com.example.thriveapp-main-63:/mipmap-hdpi/graph_image.webp"
-    },
-    {
-        "merged": "com.example.thriveapp-debug-61:/mipmap-xxhdpi_graph_image_round.webp.flat",
-        "source": "com.example.thriveapp-main-63:/mipmap-xxhdpi/graph_image_round.webp"
-    },
-    {
         "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\menu_toolbar_menu.xml.flat",
         "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\menu\\toolbar_menu.xml"
     },
@@ -84,16 +64,16 @@
         "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "com.example.thriveapp-debug-61:/mipmap-xhdpi_graph_image_round.webp.flat",
-        "source": "com.example.thriveapp-main-63:/mipmap-xhdpi/graph_image_round.webp"
-    },
-    {
         "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
         "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\drawable_dividor.xml.flat",
         "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\drawable\\dividor.xml"
+    },
+    {
+        "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\mipmap-xhdpi_graph_image_round.webp.flat",
+        "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\mipmap-xhdpi\\graph_image_round.webp"
     },
     {
         "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\layout_activity_meal_tracking.xml.flat",
@@ -108,20 +88,32 @@
         "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\mipmap-xhdpi\\ic_launcher.webp"
     },
     {
+        "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\mipmap-xxxhdpi_graph_image_round.webp.flat",
+        "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\mipmap-xxxhdpi\\graph_image_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\mipmap-anydpi-v26_graph_image_round.xml.flat",
+        "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\mipmap-anydpi-v26\\graph_image_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\mipmap-mdpi_graph_image_round.webp.flat",
+        "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\mipmap-mdpi\\graph_image_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\mipmap-anydpi-v26_graph_image.xml.flat",
+        "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\mipmap-anydpi-v26\\graph_image.xml"
+    },
+    {
         "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\layout_activity_login.xml.flat",
         "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\layout\\activity_login.xml"
     },
     {
+        "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\mipmap-xxhdpi_graph_image_round.webp.flat",
+        "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\mipmap-xxhdpi\\graph_image_round.webp"
+    },
+    {
         "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\mipmap-xhdpi\\ic_launcher_round.webp"
-    },
-    {
-        "merged": "com.example.thriveapp-debug-61:/mipmap-mdpi_graph_image.webp.flat",
-        "source": "com.example.thriveapp-main-63:/mipmap-mdpi/graph_image.webp"
-    },
-    {
-        "merged": "com.example.thriveapp-debug-61:/mipmap-mdpi_graph_image_round.webp.flat",
-        "source": "com.example.thriveapp-main-63:/mipmap-mdpi/graph_image_round.webp"
     },
     {
         "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\drawable_ic_launcher_background.xml.flat",
@@ -132,12 +124,12 @@
         "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\drawable\\dumbell.png"
     },
     {
-        "merged": "com.example.thriveapp-debug-61:/layout_activity_main.xml.flat",
-        "source": "com.example.thriveapp-main-63:/layout/activity_main.xml"
+        "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\mipmap-hdpi_graph_image_round.webp.flat",
+        "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\mipmap-hdpi\\graph_image_round.webp"
     },
     {
-        "merged": "com.example.thriveapp-debug-61:/mipmap-xxxhdpi_graph_image_round.webp.flat",
-        "source": "com.example.thriveapp-main-63:/mipmap-xxxhdpi/graph_image_round.webp"
+        "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\mipmap-mdpi_graph_image.webp.flat",
+        "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\mipmap-mdpi\\graph_image.webp"
     },
     {
         "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\drawable_button_rounded.xml.flat",
@@ -148,12 +140,20 @@
         "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\drawable\\weight.xml"
     },
     {
-        "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\drawable_sun_icon.xml.flat",
-        "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\drawable\\sun_icon.xml"
+        "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\drawable_graph_image_foreground.xml.flat",
+        "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\drawable\\graph_image_foreground.xml"
     },
     {
-        "merged": "com.example.thriveapp-debug-61:/mipmap-xxxhdpi_graph_image.webp.flat",
-        "source": "com.example.thriveapp-main-63:/mipmap-xxxhdpi/graph_image.webp"
+        "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\mipmap-xxxhdpi_graph_image.webp.flat",
+        "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\mipmap-xxxhdpi\\graph_image.webp"
+    },
+    {
+        "merged": "com.example.thriveapp-debug-61:/layout_activity_goal_tracking.xml.flat",
+        "source": "com.example.thriveapp-main-63:/layout/activity_goal_tracking.xml"
+    },
+    {
+        "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\drawable_sun_icon.xml.flat",
+        "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\drawable\\sun_icon.xml"
     },
     {
         "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\layout_activity_main.xml.flat",
@@ -176,7 +176,11 @@
         "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.thriveapp-debug-61:/mipmap-anydpi-v26_graph_image_round.xml.flat",
-        "source": "com.example.thriveapp-main-63:/mipmap-anydpi-v26/graph_image_round.xml"
+        "merged": "com.example.thriveapp-debug-61:/layout_activity_graphing.xml.flat",
+        "source": "com.example.thriveapp-main-63:/layout/activity_graphing.xml"
+    },
+    {
+        "merged": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-debug-61:\\mipmap-xxhdpi_graph_image.webp.flat",
+        "source": "C:\\Users\\jacob\\.gradle\\daemon\\8.11.1\\com.example.thriveapp-main-63:\\mipmap-xxhdpi\\graph_image.webp"
     }
 ]

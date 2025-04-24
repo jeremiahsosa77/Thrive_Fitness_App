@@ -3074,6 +3074,7 @@ id AddNutrientButton
 id BOTTOM_END
 id BOTTOM_START
 id CTRL
+id CategorySelector
 id DailyGoalsButton
 id ExerciseName
 id FUNCTION
@@ -3090,6 +3091,7 @@ id SHOW_PROGRESS
 id SYM
 id TOP_END
 id TOP_START
+id TaskSelector
 id accelerate
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
@@ -3553,7 +3555,11 @@ id tag_window_insets_animation_callback
 id task1
 id task2
 id task3
-id taskSelector
+id task4
+id task5
+id task6
+id task7
+id task8
 id text
 id text2
 id textEnd

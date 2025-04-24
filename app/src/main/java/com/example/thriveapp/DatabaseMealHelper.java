@@ -93,7 +93,6 @@ public class DatabaseMealHelper extends SQLiteOpenHelper {
 
         //probably doesnt work since i dont know how rawQuery works
         Cursor cursor = db.rawQuery("SELECT '"+COL_DATA+ "' FROM "+DATABASE_NAME+" WHERE  nutrient=?", new String[]{nutrientName});
-        System.out.println("Worked");
         if (cursor.moveToFirst()) { // If a user is found
             String data = cursor.getString(0); // Get the user's name
             cursor.close();
@@ -124,7 +123,6 @@ public class DatabaseMealHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         if(data >=0){
             String dataString = getDataString(nutrient);
-            System.out.println(dataString);
             dataString += Integer.toString(data);
             dataString += ",";
             values.put(COL_DATA, dataString);
