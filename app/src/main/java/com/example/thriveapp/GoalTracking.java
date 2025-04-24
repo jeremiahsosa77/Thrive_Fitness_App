@@ -60,6 +60,7 @@ public class GoalTracking extends AppCompatActivity {
         int weightData =0;
         int repsData = 0;
         float timeData = 0;
+
         TabLayout tab = (TabLayout)findViewById(R.id.dataType);
         int selectedTab = tab.getSelectedTabPosition();
         switch(selectedTab){
