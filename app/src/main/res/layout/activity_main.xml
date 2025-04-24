@@ -1,171 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <!-- This view acts as the green background block -->
-    <View
-        android:id="@+id/topBackground"
-        android:layout_width="0dp"
-        android:layout_height="110dp"
-        android:background="@color/primary_green"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Logo on top -->
-
-    <!-- Toolbar below the logo -->
-    <ImageView
-        android:id="@+id/thriveLogo"
-        android:layout_width="120dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="28dp"
-        android:contentDescription="THRIVE Logo"
-        android:src="@drawable/thrive_logo_thrive_white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <!-- Fitness Tracking Button -->
-
-    <!-- Graph Button -->
-
-    <!-- Meal Tracking Button -->
-
-    <!-- Daily Goals Button -->
+    tools:context=".MainActivity"
+    android:background="#FAFAFA">
+    <!-- GridLayout for dashboard cards -->
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/appBar"
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
+        android:background="@color/primary_green"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/logoInToolbar"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_gravity="start"
+            android:contentDescription="THRIVE Logo"
+            android:src="@drawable/thrive_logo_thrive_white" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/dashboardGrid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        app:alignmentMode="alignMargins"
+        app:columnCount="2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/thriveLogo" />
-
-    <Button
-        android:id="@+id/fitnessTrackingButton"
-        android:layout_width="200dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="@color/primary_green"
-        android:gravity="bottom|center"
-        android:text="Fitness Tracking"
-        android:textColor="@color/button_text"
-        android:textSize="20dp"
-        android:elevation="12dp"
-        app:strokeColor="@color/secondary_green"
-        app:strokeWidth="3dp"
-        app:cornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/GraphButton" />
-
-    <Button
-        android:id="@+id/GraphButton"
-        android:layout_width="200dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="68dp"
-        android:backgroundTint="@color/primary_green"
-        android:gravity="bottom|center"
-        android:text="Graphing"
-        android:textColor="@color/button_text"
-        android:textSize="20dp"
-        android:elevation="12dp"
-        app:strokeColor="@color/secondary_green"
-        app:strokeWidth="3dp"
-        app:cornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBar" />
-
-    <Button
-        android:id="@+id/MealTrackingButton"
-        android:layout_width="200dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/primary_green"
-        android:gravity="bottom|center"
-        android:text="Meal Tracking"
-        android:textSize="20dp"
-        android:elevation="12dp"
-        app:strokeColor="@color/secondary_green"
-        app:strokeWidth="3dp"
-        app:cornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fitnessTrackingButton" />
-
-    <Button
-        android:id="@+id/DailyGoalsButton"
-        android:layout_width="200dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="@color/primary_green"
-        android:gravity="bottom|center"
-        android:text="Daily Goals"
-        android:textSize="20dp"
-        android:elevation="12dp"
-        app:strokeColor="@color/secondary_green"
-        app:strokeWidth="3dp"
-        app:cornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MealTrackingButton" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="119dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/DailyGoalsButton"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="@+id/DailyGoalsButton"
-        app:layout_constraintTop_toTopOf="@+id/DailyGoalsButton"
-        app:srcCompat="@drawable/sun_icon" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="82dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="@+id/fitnessTrackingButton"
-        app:layout_constraintStart_toStartOf="@+id/fitnessTrackingButton"
-        app:layout_constraintTop_toTopOf="@+id/fitnessTrackingButton"
-        app:srcCompat="@drawable/dumbell"
-        app:tint="#E91717" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="98dp"
-        android:layout_height="72dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/MealTrackingButton"
-        app:layout_constraintStart_toStartOf="@+id/MealTrackingButton"
-        app:layout_constraintTop_toTopOf="@+id/MealTrackingButton"
-        app:srcCompat="@drawable/meal_tracking" />
-
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/GraphButton"
-        app:layout_constraintStart_toStartOf="@+id/GraphButton"
-        app:layout_constraintTop_toTopOf="@+id/GraphButton"
-        app:srcCompat="@drawable/graph_image_foreground" />
-
+        app:layout_constraintTop_toBottomOf="@id/appBar"
+        app:layout_constraintVertical_bias="1.0"
+        app:rowCount="2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

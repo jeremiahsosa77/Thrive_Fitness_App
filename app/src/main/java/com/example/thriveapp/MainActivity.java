@@ -3,12 +3,17 @@ package com.example.thriveapp;
 import android.content.SharedPreferences;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.gridlayout.widget.GridLayout;
 
 import java.util.Objects;
 
@@ -24,55 +29,48 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.appBar);
         setSupportActionBar(toolbar);
-
-        // Retrieve the logged-in user's email
-        SharedPreferences prefs = getSharedPreferences("UserSession", MODE_PRIVATE);
-        String loggedInEmail = prefs.getString("loggedInEmail", null);
-
-        if (loggedInEmail != null) {
-            String userName = dbHelper.getUserName(loggedInEmail);
-            if (userName != null) {
-                getSupportActionBar().setTitle("Hello, " + userName);
-            } else {
-                getSupportActionBar().setTitle("Hello, User");
-            }
-        } else {
-            getSupportActionBar().setTitle("Hello, User");
-            Toast.makeText(this, "No user logged in", Toast.LENGTH_SHORT).show();
+        // Hide default title
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
 
-        // Calendar Button
-        Button GraphButton=findViewById(R.id.GraphButton);
-        GraphButton.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, Graphing.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP); // ensures mainactivity isn't recreated for back button compatibility
-            startActivity(intent);
-        });
+        // Retrieve the logged-in user's email
+        //SharedPreferences prefs = getSharedPreferences("UserSession", MODE_PRIVATE);
+        //String loggedInEmail = prefs.getString("loggedInEmail", null);
 
-        // Fitness tracking button
-        Button fitnessTrackingButton = findViewById(R.id.fitnessTrackingButton);
-        fitnessTrackingButton.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, GoalTracking.class);
-            startActivity(intent);
-        });
+        // Dashboard grid
+        GridLayout dashboardGrid = findViewById(R.id.dashboardGrid);
+        LayoutInflater inflater = LayoutInflater.from(this);
 
-        // Meal tracking button
-        Button MealTrackingButton = findViewById(R.id.MealTrackingButton);
-        MealTrackingButton.setOnClickListener(v -> {
-            System.out.println("works here");
-            Intent intent = new Intent(this, MealTracking.class);
-            startActivity(intent);
-        });
-
-        // Daily goals button
-        Button dailyGoalsButton = findViewById(R.id.DailyGoalsButton);
-        dailyGoalsButton.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, DailyGoalsActivity.class);
-            startActivity(intent);
-        });
-
+        addDashboardCard(inflater, dashboardGrid, R.drawable.dumbell, "Fitness Tracking", "Log workouts & goals", GoalTracking.class);
+        addDashboardCard(inflater, dashboardGrid, R.drawable.meal_tracking, "Meal Tracking", "Stay on top of nutrition", MealTracking.class);
+        addDashboardCard(inflater, dashboardGrid, R.drawable.graph_image_foreground, "Progress Graphs", "Visualize progress", Graphing.class);
+        addDashboardCard(inflater, dashboardGrid, R.drawable.sun_icon, "Daily Goals", "Complete your habits", DailyGoalsActivity.class);
+        addDashboardCard(inflater, dashboardGrid, R.drawable.rocky_cropped, "Coach Rocky", "One step at a time", CoachRockyActivity.class);
+        addDashboardCard(inflater, dashboardGrid, R.drawable.cog_icon, "Preferences", "", PreferencesActivity.class);
 
     } // end of onCreate
+
+    // Add cards to dashboard
+    private void addDashboardCard(LayoutInflater inflater, GridLayout parent, int iconRes, String title, String context, Class<?> activityClass) {
+        View card = inflater.inflate(R.layout.view_dashboard_card, parent, false);
+
+        ((ImageView) card.findViewById(R.id.icon)).setImageResource(iconRes);
+        ((TextView) card.findViewById(R.id.title)).setText(title);
+        ((TextView) card.findViewById(R.id.subtext)).setText(context);
+
+        card.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, activityClass)));
+
+        // Add layout params to manage spacing
+        GridLayout.LayoutParams params = new GridLayout.LayoutParams();
+        params.width = 0; // auto-fit with columnCount
+        params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
+        params.setMargins(24,24,24,24);
+        card.setLayoutParams(params);
+
+        parent.addView(card);
+    }
+
 
     // Inflate the menu
     @Override
