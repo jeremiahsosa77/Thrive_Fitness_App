@@ -34,8 +34,10 @@ public class Graphing extends AppCompatActivity {
     private DatabaseTaskHelper taskHelper;
     private Map<Float, String> timestampMap = new HashMap<>(); // x -> date map for graph points
 
-    private String taskName;// = taskHelper.getAllTasks()[0];
-    private String taskCategory;// = "Weight";
+    //name of selected task
+    private String taskName;
+    //selected category of data (weight, repetitions or time)
+    private String taskCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
