@@ -95,7 +95,9 @@
         android:id="@+id/imageView"
         android:layout_width="119dp"
         android:layout_height="80dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="@+id/DailyGoalsButton"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="@+id/DailyGoalsButton"
         app:layout_constraintTop_toTopOf="@+id/DailyGoalsButton"
         app:srcCompat="@drawable/sun_icon" />
@@ -104,21 +106,22 @@
         android:id="@+id/imageView4"
         android:layout_width="82dp"
         android:layout_height="56dp"
-        android:layout_marginTop="8dp"
-        app:tint="#E91717"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="@+id/fitnessTrackingButton"
         app:layout_constraintStart_toStartOf="@+id/fitnessTrackingButton"
         app:layout_constraintTop_toTopOf="@+id/fitnessTrackingButton"
-        app:srcCompat="@drawable/dumbell" />
+        app:srcCompat="@drawable/dumbell"
+        app:tint="#E91717" />
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="98dp"
         android:layout_height="72dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="@+id/MealTrackingButton"
         app:layout_constraintStart_toStartOf="@+id/MealTrackingButton"
         app:layout_constraintTop_toTopOf="@+id/MealTrackingButton"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        app:srcCompat="@drawable/meal_tracking" />
 
     <ImageView
         android:id="@+id/imageView9"
