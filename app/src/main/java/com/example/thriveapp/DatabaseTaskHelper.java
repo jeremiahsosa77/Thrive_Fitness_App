@@ -82,8 +82,8 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
     //converts the string data to a usable array type double
     private double[] stringToDoubleArray(String[] dataString){
         double[] dataArray = new double[dataString.length];
-        String numberString ="";
         int i = 0; //position in int array
+
         for(String singleData : dataString){
             dataArray[i++] = Double.parseDouble(singleData);
         }
@@ -146,6 +146,8 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             String[] data = cursor.getString(0).split(",");
             cursor.close();
+            if(data.length == 1 && data[0] == "")
+                return new int[]{0};
             return stringToIntArray(data);
         }
         cursor.close();
@@ -160,6 +162,8 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             String[] data = cursor.getString(0).split(",");
             cursor.close();
+            if(data.length == 1 && data[0] == "")
+                return new int[]{0};
             return stringToIntArray(data);
         }
         cursor.close();
@@ -174,6 +178,8 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             String[] data = cursor.getString(0).split(",");
             cursor.close();
+            if(data.length == 1 && data[0] == "")
+                return new double[]{0};
             return stringToDoubleArray(data);
         }
         cursor.close();
@@ -210,7 +216,6 @@ public void addData(String task,int weightInfo,int repsInfo, double timeInfo){
         repsDataString += Integer.toString(repsInfo);
         repsDataString += ",";
         values.put(COL_REPS, repsDataString);
-        System.out.println(repsDataString);
     }
 
     if(timeInfo >0){
@@ -257,9 +262,6 @@ public String[] getAllTasks(){
         if (cursor.moveToFirst()) {
             String[] dates = cursor.getString(0).split(",");
             cursor.close();
-            for(String x : dates){
-                System.out.println(x);
-            }
             return dates;
         }
         cursor.close();

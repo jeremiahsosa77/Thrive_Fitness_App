@@ -113,7 +113,6 @@ public class Graphing extends AppCompatActivity {
     // Draw a workout graph using data for selected task
     private void drawWorkoutGraph(String taskName, String taskCategory) {
         LineChart chart = findViewById(R.id.workoutChart);
-
         List<Entry> entries = new ArrayList<>();
         timestampMap.clear(); // Clear old points
         //list of dates the user logged activity
@@ -123,12 +122,14 @@ public class Graphing extends AppCompatActivity {
         //time is of type float so a different array is used
         double[] timeDataList = taskHelper.getTimeData(taskName);
         //get appropriate data for the task and category
+
         switch(taskCategory){
             case "Weight":
                 dataList = taskHelper.getWeightData(taskName);
                 break;
             case "Repetitions":
                 dataList = taskHelper.getRepsData(taskName);
+
                 break;
             default:
                 dataList = new int[]{0};
@@ -154,8 +155,6 @@ public class Graphing extends AppCompatActivity {
             }
 
         }
-
-
         // Style the line graph
         LineDataSet dataSet = new LineDataSet(entries, taskName + " Reps");
         dataSet.setColor(Color.BLUE);
