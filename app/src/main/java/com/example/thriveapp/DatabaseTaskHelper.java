@@ -198,14 +198,14 @@ public void addData(String task,int weightInfo,int repsInfo, double timeInfo){
 
     SQLiteDatabase db = this.getWritableDatabase();
     ContentValues values = new ContentValues();
-    if(weightInfo >=0){
+    if(weightInfo >0){
         String weightDataString = getDataString(task,"weight");
         weightDataString += Integer.toString(weightInfo);
         weightDataString += ",";
         values.put(COL_WEIGHT, weightDataString);
     }
 
-    if(repsInfo >=0){
+    if(repsInfo >0){
         String repsDataString = getDataString(task,"reps");
         repsDataString += Integer.toString(repsInfo);
         repsDataString += ",";
@@ -213,7 +213,7 @@ public void addData(String task,int weightInfo,int repsInfo, double timeInfo){
         System.out.println(repsDataString);
     }
 
-    if(timeInfo >=0){
+    if(timeInfo >0){
         String timeDataString = getDataString(task,"time");
         timeDataString += Double.toString(timeInfo);
         timeDataString += ",";
