@@ -1,3 +1,11 @@
+//************************************
+//Program Name: DataBaseMealHelper.java
+//Developer: Jacob Zimmerhanzel & Matthias Talbert
+//Date Created: 04/12/2025
+//Version: 3
+//Purpose: Graphs information logged by the user for their exercise stats
+//************************************
+
 package com.example.thriveapp;
 
 import android.app.AlertDialog;
@@ -30,6 +38,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Graphing extends AppCompatActivity {
+    //declaring database helpers to get data
     private DatabaseHelper dbHelper;
     private DatabaseTaskHelper taskHelper;
     private Map<Float, String> timestampMap = new HashMap<>(); // x -> date map for graph points
@@ -39,11 +48,11 @@ public class Graphing extends AppCompatActivity {
     //selected category of data (weight, repetitions or time)
     private String taskCategory;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graphing); // Set layout file for this screen
-
 
         // Set up toolbar
         Toolbar toolbar = findViewById(R.id.appBar);
@@ -65,24 +74,29 @@ public class Graphing extends AppCompatActivity {
         setupTaskSpinner(); // Show dropdown to choose exercise
     }
 
-    // Setup dropdown spinner to choose a task to graph
+    // Setup dropdown spinner to choose a task and dataset to graph
     private void setupTaskSpinner() {
-
+        //spinners can be used to select what will be graphed
         Spinner spinnerTask = findViewById(R.id.TaskSelector);
         String[] tasks = taskHelper.getAllTasks(); // Fetch available task names from DB
 
         Spinner spinnerCategory = findViewById(R.id.CategorySelector);
         String[] categories = {"Weight", "Repetitions", "Time"};
-        if (tasks == null || tasks.length == 0) return;
 
-        //global variables. Placed here instead of onCreate for convenience
+
+
+        //checks to see if there is anything to graph
+        if (tasks == null || tasks.length == 0) return;
         taskName = tasks[0];
         taskCategory = categories[0];
 
+        //global variables. Placed here instead of onCreate for convenience
+
+
 
         // Bind data to spinnerTask
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, tasks);
-        spinnerTask.setAdapter(adapter);
+        final ArrayAdapter<String>[] adapter = new ArrayAdapter[]{new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, tasks)};
+        spinnerTask.setAdapter(adapter[0]);
 
         ArrayAdapter<String> adapterCategories = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categories);
         spinnerCategory.setAdapter(adapterCategories);
@@ -92,7 +106,7 @@ public class Graphing extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 taskName = parent.getItemAtPosition(position).toString();
-                drawWorkoutGraph(taskName, taskCategory); // Draw graph for selected task
+                drawWorkoutGraph(); // Draw graph for selected task
             }
 
             @Override
@@ -102,7 +116,7 @@ public class Graphing extends AppCompatActivity {
         spinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 taskCategory = parent.getItemAtPosition(position).toString();
-                drawWorkoutGraph(taskName,taskCategory); // Draw graph for selected task
+                drawWorkoutGraph(); // Draw graph for selected task
             }
 
             @Override
@@ -111,7 +125,7 @@ public class Graphing extends AppCompatActivity {
     }
 
     // Draw a workout graph using data for selected task
-    private void drawWorkoutGraph(String taskName, String taskCategory) {
+    private void drawWorkoutGraph() {
         LineChart chart = findViewById(R.id.workoutChart);
         List<Entry> entries = new ArrayList<>();
         timestampMap.clear(); // Clear old points
@@ -192,9 +206,6 @@ public class Graphing extends AppCompatActivity {
             public void onNothingSelected() {}
         });
     }
-
-    // Show recommendation text based on user's fitness goal
-
 
     // Handle top-left back button
     @Override

@@ -13,6 +13,7 @@
         android:layout_height="202dp"
         android:layout_marginStart="44dp"
         android:layout_marginBottom="28dp"
+        android:backgroundTint="@color/background_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -28,7 +29,9 @@
             android:paddingVertical="2dp"
             android:scrollbarAlwaysDrawVerticalTrack="true"
             android:scrollbars="vertical"
+            android:backgroundTint="@color/background_white"
             android:showDividers="middle" />
+
     </ScrollView>
 
     <LinearLayout
@@ -36,6 +39,7 @@
         android:layout_height="152dp"
         android:layout_marginBottom="240dp"
         android:orientation="horizontal"
+        android:backgroundTint="@color/background_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
@@ -48,13 +52,16 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="text"
+            android:backgroundTint="@color/background_white"
+            android:textColor="@color/dark_text"
             android:text="Name" />
+
 
         <Button
             android:id="@+id/AddNutrientButton"
             android:layout_width="171dp"
             android:layout_height="62dp"
-            android:backgroundTint="#2F8134"
+            android:backgroundTint="@color/primary_green"
             android:onClick="addNutrient"
             android:text="Add Nutrient"
             android:textSize="20dp" />
@@ -83,6 +90,8 @@
         android:layout_marginTop="140dp"
         android:ems="10"
         android:inputType="numberDecimal"
+        android:backgroundTint="@color/background_white"
+        android:textColor="@color/dark_text"
         android:text="Enter Data"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -93,6 +102,8 @@
         android:layout_height="51dp"
         android:layout_marginTop="32dp"
         android:text="Click on Nutrient"
+        android:backgroundTint="@color/background_white"
+        android:textColor="@color/dark_text"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.108"

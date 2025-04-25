@@ -7,19 +7,26 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.Calendar;
 
 import java.util.Date;
-
+//************************************
+//Program Name: DataBaseMealHelper.java
+//Developer: Jacob Zimmerhanzel
+//Date Created: 04/18/2025
+//Version: 3.2
+//Purpose: Provides methods and a database for the meal tracking menu
+//************************************
 public class DatabaseMealHelper extends SQLiteOpenHelper {
+    //variables to set the meal database
     private static final String DATABASE_NAME = "ThriveNutrientDB";
-    private static final String COL_ID = "id";
+    private static final String COL_ID = "id"; // row id
     private static final String COL_NUTRIENT = "nutrient";//name of the nutrient
     private static final String COL_DATA = "data"; //nutrients for meal
 
     private static final String COL_DATE = "date";//when the user logged their exercise
 
     public DatabaseMealHelper(Context context) {
-        super(context, DATABASE_NAME, null, 2);
+        super(context, DATABASE_NAME, null, 3);
     }//make sure to increment version (last int value) each time the database structure is changed
-
+    //calls when class is created in another java class
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + DATABASE_NAME + " (" +
@@ -29,6 +36,8 @@ public class DatabaseMealHelper extends SQLiteOpenHelper {
                 COL_DATE + " TEXT)";
         db.execSQL(createTable);
     }
+
+    //updates the database
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_NAME);
@@ -46,28 +55,54 @@ public class DatabaseMealHelper extends SQLiteOpenHelper {
     }
 
     //converts the string version of nutrien data into an array of its
-    private int[] stringToIntArray(String dataString) {
-        int[] dataArray = new int[dataString.length()];
-        String numberString = "";
-        int y = 0; //position in int array
-        for (int i = 0; i < dataString.length(); i++) {
-            if (dataString.charAt(i) != ',') {
-                numberString += dataString.charAt(i);
-            } else {
-                dataArray[y++] = Integer.parseInt(numberString);
-                i++;
-            }
+    private int[] stringToIntArray(String[] dataString){
+        int[] dataArray = new int[dataString.length];
+        int i = 0; //position in int array
+        for(String singleData : dataString){
+            dataArray[i++] = Integer.parseInt(singleData);
         }
         return dataArray;
     }
 
-    public String getDates(String nutrientParam) {
+    //gets an int array of data associated with a nutrient
+    public int[] getNutrientData(String nutrient) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT data FROM " + DATABASE_NAME + " WHERE nutrient=?", new String[]{nutrient});
+        if (cursor.moveToFirst()) {
+            String[] data = cursor.getString(0).split(",");
+            data[0] = data[0].replace("data","");
+            cursor.close();
+            if(data.length == 1 && data[0] == "")
+                return new int[]{0};
+            return stringToIntArray(data);
+        }
+        cursor.close();
+        return null; // Return null if user not found
+    }
+
+    //gets the dates of when the user logged information
+    public String[] getDateArray(String nutrientName) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT date FROM "+DATABASE_NAME+" WHERE nutrient=?", new String[]{nutrientName});
+        if (cursor.moveToFirst()) {
+            String[] dates = cursor.getString(0).split(",");
+            dates[0] = dates[0].replace("date","");
+            cursor.close();
+            return dates;
+        }
+        cursor.close();
+        return null;
+    }
+
+    //gets date string to add new dates to the database
+    private String getDateString(String nutrientParam) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery("SELECT date FROM " + DATABASE_NAME + " WHERE nutrient=?", new String[]{nutrientParam});
 
         if (cursor.moveToFirst()) { // If a user is found
-            String data = cursor.getString(1); // Get the user's name
+            String data = cursor.getString(0); // Get the user's name
             cursor.close();
             return data;
         }
@@ -94,7 +129,7 @@ public class DatabaseMealHelper extends SQLiteOpenHelper {
         //probably doesnt work since i dont know how rawQuery works
         Cursor cursor = db.rawQuery("SELECT '"+COL_DATA+ "' FROM "+DATABASE_NAME+" WHERE  nutrient=?", new String[]{nutrientName});
         if (cursor.moveToFirst()) { // If a user is found
-            String data = cursor.getString(0); // Get the user's name
+            String data = cursor.getString(0); // Get the user's data
             cursor.close();
             return data;
         }
@@ -102,6 +137,7 @@ public class DatabaseMealHelper extends SQLiteOpenHelper {
         return null; // Return null if user not found
     }
 
+    //gets current date as a formatted string
     private String getCurrentDate(){
         Calendar calendar = Calendar.getInstance();
         Date date = new Date();
@@ -118,7 +154,7 @@ public class DatabaseMealHelper extends SQLiteOpenHelper {
 
     //adds data to nutrient. string is nutrient name, int data is the data to add to end of list
     public void addData(String nutrient,int data){
-
+        //gets information already written and adds on to it
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         if(data >=0){
@@ -127,7 +163,10 @@ public class DatabaseMealHelper extends SQLiteOpenHelper {
             dataString += ",";
             values.put(COL_DATA, dataString);
         }
-        values.put(COL_DATE, getCurrentDate() + ",");
+        String date = getDateString(nutrient);
+        date += getCurrentDate();
+        date += ",";
+        values.put(COL_DATE, date);
         db.update(DATABASE_NAME, values, "nutrient=?", new String[]{nutrient});
     }
     public String[] getAllTrackedNutrients(){
@@ -139,14 +178,13 @@ public class DatabaseMealHelper extends SQLiteOpenHelper {
         cursor.moveToFirst();
         while (!cursor.isAfterLast())
         {
-            nutrientNames[arrayPosition] = cursor.getString(0); //this is probably the wrong column
+            nutrientNames[arrayPosition] = cursor.getString(0);
             arrayPosition += 1;
             cursor.moveToNext();
         }
         cursor.close();
         db.close();
         return nutrientNames;
-
     }
 
 
