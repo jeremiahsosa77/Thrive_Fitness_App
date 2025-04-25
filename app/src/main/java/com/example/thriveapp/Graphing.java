@@ -73,12 +73,12 @@ public class Graphing extends AppCompatActivity {
 
         Spinner spinnerCategory = findViewById(R.id.CategorySelector);
         String[] categories = {"Weight", "Repetitions", "Time"};
+        if (tasks == null || tasks.length == 0) return;
 
         //global variables. Placed here instead of onCreate for convenience
         taskName = tasks[0];
         taskCategory = categories[0];
 
-        if (tasks == null || tasks.length == 0) return;
 
         // Bind data to spinnerTask
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, tasks);
