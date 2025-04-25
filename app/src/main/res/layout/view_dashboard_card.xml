@@ -6,7 +6,7 @@
     android:clickable="true"
     android:foreground="?attr/selectableItemBackground"
     android:elevation="4dp"
-    android:backgroundTint="@android:color/white"
+    android:backgroundTint="@color/background_white"
     app:cardCornerRadius="16dp"
     app:cardElevation="2dp">
 
@@ -32,7 +32,7 @@
             android:text="Title"
             android:textStyle="bold"
             android:textSize="18sp"
-            android:textColor="#212121" />
+            android:textColor="@color/dark_text" />
 
         <TextView
             android:id="@+id/subtext"
@@ -41,7 +41,7 @@
             android:layout_marginTop="4dp"
             android:text="Context description"
             android:textSize="14sp"
-            android:textColor="#666666"
+            android:textColor="@color/dark_text"
             android:gravity="center" />
 
     </LinearLayout>

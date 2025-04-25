@@ -10,7 +10,7 @@
 
     <!-- Background Colors -->
     <color name="background_white">#FFFFFF</color>
-    <color name="light_gray">#F5F5F5</color>
+    <color name="light_gray">#EBEBEB</color>
 
     <!-- Text Colors -->
     <color name="dark_text">#212121</color>

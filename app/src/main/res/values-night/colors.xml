@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!-- Default -->
+<color name="black">#FF000000</color>
+<color name="white">#FFFFFFFF</color>
+
+<!-- Primary Colors -->
+<color name="primary_green">#28712C</color>
+<color name="secondary_green">#529B54</color>
+
+<!-- Background Colors -->
+<color name="background_white">#4E4E4E</color>
+<color name="light_gray">#232222</color>
+
+<!-- Text Colors -->
+<color name="dark_text">#FFFFFF</color>
+<color name="body_text">#959595</color>
+<color name="button_text">#FFFFFF</color>
+
+</resources>

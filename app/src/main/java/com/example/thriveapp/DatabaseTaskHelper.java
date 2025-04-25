@@ -9,11 +9,17 @@ import java.util.Calendar;
 
 import java.util.Date;
 
-
+//************************************
+//Program Name: DataBaseMealHelper.java
+//Developer: Jacob Zimmerhanzel
+//Date Created: 04/19/2025
+//Version: 6.1
+//Purpose: Provides methods and a database for the goal tracking menu
+//************************************
 public class DatabaseTaskHelper extends SQLiteOpenHelper {
-
+    //variables to set the goal database
     private static final String DATABASE_NAME = "ThriveTaskDB1";
-    private static final String COL_ID = "id";
+    private static final String COL_ID = "id"; // row id
     private static final String COL_TASK = "task";//name of the exercise
     private static final String COL_WEIGHT = "weight"; //weight for exercise
     private static final String COL_REPS = "reps"; //repetitions for exercise
@@ -22,7 +28,7 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
     private static final String COL_DATE = "date";//when the user logged their exercise
 
 
-
+    //constructor
     public DatabaseTaskHelper(Context context) {
         super(context, DATABASE_NAME, null, 147);
     }//make sure to increment version (last int value) each time the database structure is changed
@@ -54,18 +60,7 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
         cursor.close();
         return count;
     }
-    //converts an int array into a string so it can be put into the database //TODO: remove, not used
-    private String arrayToString(int[] dataArray) {
-        //StringBuilder is more efficient for loops. assign string to stringBuild at end
-        StringBuilder stringBuild = new StringBuilder();
-        String dataString = "";
-        for(int element : dataArray) {
-            stringBuild.append(element);
-            stringBuild.append(",");
-        }
-        dataString = stringBuild.toString();
-        return dataString;
-    }
+
 
     //converts the string version of task data into an array of its
     private int[] stringToIntArray(String[] dataString){
@@ -90,21 +85,6 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
         return dataArray;
     }
 
-
-    public String getDates(String taskParam){
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        Cursor cursor = db.rawQuery("SELECT date FROM " + DATABASE_NAME + " WHERE task=?", new String[]{taskParam});
-
-        if (cursor.moveToFirst()) { // If a user is found
-            String data = cursor.getString(0); // Get the user's name
-            cursor.close();
-            return data;
-        }
-        cursor.close();
-        return null; // Return null if user not found
-
-    }
 
 
 
@@ -240,7 +220,7 @@ public String[] getAllTasks(){
     cursor.moveToFirst();
     while (!cursor.isAfterLast())
             {
-                taskNames[arrayPosition] = cursor.getString(0); //this is probably the wrong column
+                taskNames[arrayPosition] = cursor.getString(0);
                 arrayPosition += 1;
                 cursor.moveToNext();
             }
@@ -248,13 +228,6 @@ public String[] getAllTasks(){
     db.close();
     return taskNames;
 }
-
-
-
-    // gets the total reps by timestamp for graphing
-
-
-    // Fetch full stats (sets, duration, calories) for the clicked date
 
     public String[] getDateArray(String taskName) {
         SQLiteDatabase db = this.getReadableDatabase();

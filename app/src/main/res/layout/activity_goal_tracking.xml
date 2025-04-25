@@ -5,6 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/background_white"
+    android:textColor="@color/dark_text"
     tools:context=".GoalTracking">
 
     <ScrollView
@@ -13,6 +15,7 @@
         android:layout_height="202dp"
         android:layout_marginStart="44dp"
         android:layout_marginBottom="28dp"
+        android:backgroundTint="@color/background_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -29,6 +32,7 @@
             android:paddingVertical="20dp"
             android:scrollbarAlwaysDrawVerticalTrack="true"
             android:scrollbars="vertical"
+            android:backgroundTint="@color/background_white"
             android:showDividers="middle" />
     </ScrollView>
 
@@ -38,6 +42,8 @@
         android:layout_height="38dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="80dp"
+        android:backgroundTint="@color/background_white"
+        android:textColor="@color/dark_text"
         android:text="Click on Exercise"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,6 +54,8 @@
         android:layout_height="149dp"
         android:layout_marginBottom="240dp"
         android:orientation="horizontal"
+        android:backgroundTint="@color/background_white"
+        android:textColor="@color/dark_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.235"
@@ -60,7 +68,10 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="text"
+            android:backgroundTint="@color/background_white"
+            android:textColor="@color/dark_text"
             android:text="Name" />
+
 
         <Button
             android:id="@+id/addTaskButton"
@@ -69,6 +80,7 @@
             android:layout_marginEnd="60dp"
             android:layout_marginBottom="104dp"
             android:backgroundTint="@color/primary_green"
+            android:textColor="@color/white"
             android:onClick="addTask"
             android:text="Add Task"
             android:textAlignment="center"
@@ -83,6 +95,8 @@
         android:layout_width="317dp"
         android:layout_height="59dp"
         android:layout_marginTop="152dp"
+        android:backgroundTint="@color/background_white"
+        android:textColor="@color/dark_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.446"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,16 +107,23 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/dark_text"
             android:text="Weight" />
+
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/dark_text"
             android:text="Repetitions" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_white"
+            android:textColor="@color/dark_text"
             android:text="Time" />
     </com.google.android.material.tabs.TabLayout>
 
@@ -128,6 +149,8 @@
         android:layout_marginTop="236dp"
         android:ems="10"
         android:inputType="numberDecimal"
+        android:backgroundTint="@color/background_white"
+        android:textColor="@color/dark_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

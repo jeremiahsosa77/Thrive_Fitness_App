@@ -1,3 +1,10 @@
+//************************************
+//Program Name: MealTracking.java
+//Developer: Jacob Zimmerhanzel
+//Date Created: 03/10/2025
+//Version: 2.1
+//Purpose: lets the user interface to add new nutrients to track and input information
+//************************************
 package com.example.thriveapp;
 
 import android.graphics.Color;

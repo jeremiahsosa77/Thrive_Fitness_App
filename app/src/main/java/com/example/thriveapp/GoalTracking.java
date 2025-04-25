@@ -1,3 +1,11 @@
+//************************************
+//Program Name: GoalTracking.java
+//Developer: Jacob Zimmerhanzel
+//Date Created: 03/10/2025
+//Version: 2.1
+//Purpose: lets the user interface to add new exercises to track and input information
+//************************************
+
 package com.example.thriveapp;
 
 import static androidx.compose.ui.graphics.ColorKt.Color;
@@ -43,6 +51,8 @@ public class GoalTracking extends AppCompatActivity {
             return insets;
         });
     }
+
+    //calls when the user clicks on one of their tracked exercises
     public void ClickedExercise(View button) {
         String buttonText = ((Button)button).getText().toString();
         TextView ExerciseName = (TextView)findViewById(R.id.ExerciseName);
@@ -50,6 +60,8 @@ public class GoalTracking extends AppCompatActivity {
 
 
     }
+
+    //calls when the user clicks enter after adding information into the data box
     public void InformationAdded(View button) {
         TextView exerciseText = (TextView)findViewById(R.id.ExerciseName);
         EditText DataField = (EditText)findViewById(R.id.dataField);

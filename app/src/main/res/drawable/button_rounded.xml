@@ -8,8 +8,8 @@
         android:angle="0"
         android:centerX="0%"
         android:centerColor="#2F8134"
-        android:startColor="#2F8134"
-        android:endColor="#2F8134"
+        android:startColor="@color/primary_green"
+        android:endColor="@color/primary_green"
         android:type="linear"
         />
     <padding
