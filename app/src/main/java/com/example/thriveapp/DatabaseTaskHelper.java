@@ -24,7 +24,7 @@ public class DatabaseTaskHelper extends SQLiteOpenHelper {
 
 
     public DatabaseTaskHelper(Context context) {
-        super(context, DATABASE_NAME, null, 145);
+        super(context, DATABASE_NAME, null, 147);
     }//make sure to increment version (last int value) each time the database structure is changed
 
     @Override

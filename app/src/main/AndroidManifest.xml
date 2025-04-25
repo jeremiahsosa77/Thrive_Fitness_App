@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -28,7 +30,8 @@
         <activity android:name=".GoalTracking" />
         <activity android:name=".MealTracking" />
         <activity android:name=".DailyGoalsActivity" />
-
+        <activity android:name=".CoachRockyActivity" />
+        <activity android:name=".PreferencesActivity" />
 
     </application>
 
