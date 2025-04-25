@@ -1,5 +1,5 @@
 //************************************
-//Program Name: DataBaseMealHelper.java
+//Program Name: GoalTracking.java
 //Developer: Jacob Zimmerhanzel
 //Date Created: 03/10/2025
 //Version: 2.1
